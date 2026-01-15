@@ -1,4 +1,4 @@
-import { ExternalLink } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface Resource {
   name: string;
@@ -34,7 +34,9 @@ const ResourceList = ({ id, title, resources }: ResourceListProps) => {
                   {resource.description}
                 </div>
               </div>
-              <ExternalLink className="w-4 h-4 text-muted-foreground flex-shrink-0 ml-4" />
+              <Button variant="outline" size="sm" className="ml-4 flex-shrink-0">
+                Visiter
+              </Button>
             </a>
           ))}
         </div>
