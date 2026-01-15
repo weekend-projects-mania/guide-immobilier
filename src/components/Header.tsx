@@ -9,25 +9,25 @@ const Header = () => {
       <div className="container px-4">
         <nav className="flex items-center justify-between h-14">
           <a href="/" className="text-lg font-semibold text-foreground">
-            Real Estate Links
+            Guide Immobilier
           </a>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6">
-            <a href="#buying" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Buying
+            <a href="#calculer" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Calculer
             </a>
-            <a href="#selling" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Selling
+            <a href="#verifier" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Vérifier
             </a>
-            <a href="#investing" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Investing
+            <a href="#rechercher" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Rechercher
             </a>
-            <a href="#mortgages" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Mortgages
+            <a href="#ressources" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Ressources
             </a>
-            <a href="#research" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Research
+            <a href="#financer" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Financer
             </a>
           </div>
 
@@ -44,20 +44,20 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden border-t border-border py-4 animate-fade-in">
             <div className="flex flex-col gap-3">
-              <a href="#buying" onClick={() => setIsMenuOpen(false)} className="text-sm text-muted-foreground hover:text-foreground transition-colors py-1">
-                Buying
+              <a href="#calculer" onClick={() => setIsMenuOpen(false)} className="text-sm text-muted-foreground hover:text-foreground transition-colors py-1">
+                Calculer
               </a>
-              <a href="#selling" onClick={() => setIsMenuOpen(false)} className="text-sm text-muted-foreground hover:text-foreground transition-colors py-1">
-                Selling
+              <a href="#verifier" onClick={() => setIsMenuOpen(false)} className="text-sm text-muted-foreground hover:text-foreground transition-colors py-1">
+                Vérifier
               </a>
-              <a href="#investing" onClick={() => setIsMenuOpen(false)} className="text-sm text-muted-foreground hover:text-foreground transition-colors py-1">
-                Investing
+              <a href="#rechercher" onClick={() => setIsMenuOpen(false)} className="text-sm text-muted-foreground hover:text-foreground transition-colors py-1">
+                Rechercher
               </a>
-              <a href="#mortgages" onClick={() => setIsMenuOpen(false)} className="text-sm text-muted-foreground hover:text-foreground transition-colors py-1">
-                Mortgages
+              <a href="#ressources" onClick={() => setIsMenuOpen(false)} className="text-sm text-muted-foreground hover:text-foreground transition-colors py-1">
+                Ressources
               </a>
-              <a href="#research" onClick={() => setIsMenuOpen(false)} className="text-sm text-muted-foreground hover:text-foreground transition-colors py-1">
-                Research
+              <a href="#financer" onClick={() => setIsMenuOpen(false)} className="text-sm text-muted-foreground hover:text-foreground transition-colors py-1">
+                Financer
               </a>
             </div>
           </div>
