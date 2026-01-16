@@ -1,6 +1,8 @@
 interface Site {
   name: string;
   url: string;
+  subtitle?: string;
+  description?: string;
 }
 
 interface SiteGridProps {
@@ -22,11 +24,11 @@ const SiteGrid = ({ id, title, sites }: SiteGridProps) => {
   return (
     <section id={id} className="py-8">
       <div className="container px-4">
-        <h2 className="text-lg font-medium text-foreground mb-4">{title}</h2>
+        <h2 className="text-lg font-bold uppercase text-black dark:text-white mb-4">{title}</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {sites.map((site) => (
             <a
-              key={site.name}
+              key={site.name + site.url}
               href={site.url}
               target="_blank"
               rel="noopener noreferrer"
@@ -40,6 +42,16 @@ const SiteGrid = ({ id, title, sites }: SiteGridProps) => {
               <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors text-center">
                 {site.name}
               </span>
+              {site.subtitle && (
+                <span className="text-xs text-muted-foreground text-center">
+                  {site.subtitle}
+                </span>
+              )}
+              {site.description && (
+                <span className="text-xs text-muted-foreground text-center italic mt-1">
+                  {site.description}
+                </span>
+              )}
             </a>
           ))}
         </div>
