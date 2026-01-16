@@ -18,9 +18,9 @@ const ResourceList = ({ id, title, resources }: ResourceListProps) => {
       <div className="container px-4">
         <h2 className="text-lg font-medium text-foreground mb-4">{title}</h2>
         <div className="border border-border rounded-lg divide-y divide-border bg-card">
-          {resources.map((resource) => (
+          {resources.map((resource, index) => (
             <a
-              key={resource.name}
+              key={`${resource.name}-${index}`}
               href={resource.url}
               target="_blank"
               rel="noopener noreferrer"
@@ -28,10 +28,10 @@ const ResourceList = ({ id, title, resources }: ResourceListProps) => {
             >
               <div className="min-w-0 flex-1">
                 <div className="font-medium text-foreground group-hover:text-primary transition-colors">
-                  {resource.name}
+                  {resource.description}
                 </div>
                 <div className="text-sm text-muted-foreground truncate">
-                  {resource.description}
+                  {resource.name}
                 </div>
               </div>
               <Button variant="outline" size="sm" className="ml-4 flex-shrink-0">
