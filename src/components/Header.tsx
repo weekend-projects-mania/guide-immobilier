@@ -9,25 +9,25 @@ const Header = () => {
       <div className="container px-4">
         <nav className="flex items-center justify-between h-14">
           <a href="/" className="text-lg font-semibold text-foreground">
-            Guide Immobilier
+            Le Guide Immobilier 🇧🇪
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6">
-            <a href="#calculer" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+          <div className="hidden md:flex items-center gap-2">
+            <a href="#calculer" className="text-sm text-muted-foreground hover:text-foreground hover:bg-amber-100 dark:hover:bg-amber-900/30 px-3 py-2 rounded-md transition-all">
               Calculer
             </a>
-            <a href="#verifier" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <a href="#verifier" className="text-sm text-muted-foreground hover:text-foreground hover:bg-amber-100 dark:hover:bg-amber-900/30 px-3 py-2 rounded-md transition-all">
               Vérifier
             </a>
-            <a href="#rechercher" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <a href="#rechercher" className="text-sm text-muted-foreground hover:text-foreground hover:bg-amber-100 dark:hover:bg-amber-900/30 px-3 py-2 rounded-md transition-all">
               Rechercher
             </a>
-            <a href="#ressources" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <a href="#ressources" className="text-sm text-muted-foreground hover:text-foreground hover:bg-amber-100 dark:hover:bg-amber-900/30 px-3 py-2 rounded-md transition-all">
               Ressources
             </a>
-            <a href="#financer" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Financer
+            <a href="#mon-bien" className="text-sm text-muted-foreground hover:text-foreground hover:bg-amber-100 dark:hover:bg-amber-900/30 px-3 py-2 rounded-md transition-all">
+              Mon bien
             </a>
           </div>
 
@@ -43,21 +43,21 @@ const Header = () => {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden border-t border-border py-4 animate-fade-in">
-            <div className="flex flex-col gap-3">
-              <a href="#calculer" onClick={() => setIsMenuOpen(false)} className="text-sm text-muted-foreground hover:text-foreground transition-colors py-1">
+            <div className="flex flex-col gap-1">
+              <a href="#calculer" onClick={() => setIsMenuOpen(false)} className="text-sm text-muted-foreground hover:text-foreground hover:bg-amber-100 dark:hover:bg-amber-900/30 px-3 py-2 rounded-md transition-all">
                 Calculer
               </a>
-              <a href="#verifier" onClick={() => setIsMenuOpen(false)} className="text-sm text-muted-foreground hover:text-foreground transition-colors py-1">
+              <a href="#verifier" onClick={() => setIsMenuOpen(false)} className="text-sm text-muted-foreground hover:text-foreground hover:bg-amber-100 dark:hover:bg-amber-900/30 px-3 py-2 rounded-md transition-all">
                 Vérifier
               </a>
-              <a href="#rechercher" onClick={() => setIsMenuOpen(false)} className="text-sm text-muted-foreground hover:text-foreground transition-colors py-1">
+              <a href="#rechercher" onClick={() => setIsMenuOpen(false)} className="text-sm text-muted-foreground hover:text-foreground hover:bg-amber-100 dark:hover:bg-amber-900/30 px-3 py-2 rounded-md transition-all">
                 Rechercher
               </a>
-              <a href="#ressources" onClick={() => setIsMenuOpen(false)} className="text-sm text-muted-foreground hover:text-foreground transition-colors py-1">
+              <a href="#ressources" onClick={() => setIsMenuOpen(false)} className="text-sm text-muted-foreground hover:text-foreground hover:bg-amber-100 dark:hover:bg-amber-900/30 px-3 py-2 rounded-md transition-all">
                 Ressources
               </a>
-              <a href="#financer" onClick={() => setIsMenuOpen(false)} className="text-sm text-muted-foreground hover:text-foreground transition-colors py-1">
-                Financer
+              <a href="#mon-bien" onClick={() => setIsMenuOpen(false)} className="text-sm text-muted-foreground hover:text-foreground hover:bg-amber-100 dark:hover:bg-amber-900/30 px-3 py-2 rounded-md transition-all">
+                Mon bien
               </a>
             </div>
           </div>

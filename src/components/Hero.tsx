@@ -3,7 +3,7 @@ const Hero = () => {
     <section className="py-16 md:py-24">
       <div className="container px-4">
         <h1 className="text-3xl md:text-4xl font-semibold text-foreground mb-3">
-          Ressources Immobilières
+          Ton site immo favori !
         </h1>
         <p className="text-muted-foreground max-w-xl">
           S'informer pour acheter malin - les sites utiles pour vos projets immobiliers

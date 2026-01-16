@@ -1,40 +1,53 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import ResourceList from "@/components/ResourceList";
+import SiteGrid from "@/components/SiteGrid";
 import Footer from "@/components/Footer";
 
 const calculerResources = [
-  { name: "Zillow", url: "https://www.zillow.com", description: "Search homes for sale with Zestimate values" },
-  { name: "Realtor.com", url: "https://www.realtor.com", description: "MLS listings and home search" },
-  { name: "Redfin", url: "https://www.redfin.com", description: "Real estate brokerage with low fees" },
-  { name: "Trulia", url: "https://www.trulia.com", description: "Neighborhood insights and listings" },
+  { name: "Notaire.be", url: "https://www.notaire.be/calculateurs/immobilier/calcul-de-frais-dacte-dachat-dun-bien-immobilier-et/ou-dun-terrain-batir", description: "Estimer les frais de \"notaire\" d'un bien immobilier (Wallonie/Bruxelles/Flandre)" },
+  { name: "Guide-épargne.be", url: "https://www.guide-epargne.be/epargner/simulation-creditlogement.html#results", description: "Simuler son prêt hypothécaire" },
+  { name: "Notaire.be", url: "https://www.notaire.be/calculateurs/immobilier/calcul-de-frais-dacte-de-credit-hypothecaire", description: "Estimer les frais d'acte de crédit hypothécaire" },
+  { name: "Notaire.be", url: "https://www.notaire.be/calculateurs/immobilier/calcul-de-frais-dacte-dachat-lors-dune-vente-publique-en-ligne-biddit", description: "Estimer les frais d'acte d'achat pour une vente Biddit (enchère)" },
+  { name: "Guide-épargne.be", url: "https://www.guide-epargne.be/epargner/comparez/frais-refinancement.html", description: "Estimer les frais de refinancement de votre crédit" },
+  { name: "Notaire.be", url: "https://www.notaire.be/calculateurs/immobilier/calcul-de-frais-dacte-de-mainlevee-hypothecaire", description: "Estimer les frais d'acte de mainlevée hypothécaire" },
+  { name: "Bruxelles Logement", url: "https://loyers.brussels/#step-1", description: "Calculer le loyer de référence à Bruxelles" },
+  { name: "Wallonie Logement", url: "https://loyerswallonie.be/", description: "Grille des loyers en Wallonie" },
+  { name: "Immoweb", url: "https://www.immoweb.be/fr/estimation-immobiliere/simulateur-prix/address", description: "Estimer la valeur d'un bien immobilier" },
+  { name: "MyPension", url: "https://www.sfpd.fgov.be/fr/montant-de-la-pension/combien", description: "Calculer le montant de sa pension" },
 ];
 
 const verifierResources = [
-  { name: "Opendoor", url: "https://www.opendoor.com", description: "Instant cash offers for your home" },
-  { name: "Offerpad", url: "https://www.offerpad.com", description: "iBuyer home selling platform" },
-  { name: "FSBO.com", url: "https://www.fsbo.com", description: "For sale by owner listings" },
+  { name: "Banque Nationale de Belgique (BNB)", url: "https://www.nbb.be/fr/centrales-des-credits/centrale-des-credits-aux-particuliers-ccp/consulter/informations-pour-les", description: "Consulter les crédits liés à mon nom" },
+  { name: "Banque Nationale de Belgique (BNB)", url: "https://www.nbb.be/fr/centrale-des-bilans/consulter/consult", description: "Consulter les comptes annuels d'une entreprise" },
+  { name: "Banque-Carrefour des Entreprises (BCE)", url: "https://kbopub.economie.fgov.be/kbopub/zoeknummerform.html", description: "Vérifier si une entreprise est toujours active (et ses activités)" },
+  { name: "ONSS", url: "https://www.checkobligationderetenue.be/", description: "Vérifier si une entreprise a des dettes sociales ou fiscales" },
 ];
 
 const rechercherResources = [
-  { name: "BiggerPockets", url: "https://www.biggerpockets.com", description: "Real estate investing community and education" },
-  { name: "Mashvisor", url: "https://www.mashvisor.com", description: "Investment property analytics" },
-  { name: "Roofstock", url: "https://www.roofstock.com", description: "Buy and sell rental properties" },
-  { name: "Fundrise", url: "https://www.fundrise.com", description: "Real estate crowdfunding platform" },
+  { name: "CadGis", url: "https://www.minfin.fgov.be/ecad-web/#/", description: "Voir le plan parcellaire cadastral Belge" },
+  { name: "WalOnMap", url: "https://geoportail.wallonie.be/walonmap#BBOX=178892.28320951056,187848.44695517136,125813.219979472,129682.75896855#SHARE=91B6CCCDD457492DE053D0AFA49DA89D", description: "Voir le plan parcellaire cadastral Wallon" },
+  { name: "BruGIS", url: "https://gis.urban.brussels/brugis/#/", description: "Outil de gestion de l'aménagement du territoire de Bruxelles" },
+  { name: "GeoPunt", url: "https://www.geopunt.be/", description: "Voir le plan parcellaire cadastral Flamand" },
 ];
 
 const ressourcesResources = [
-  { name: "Bankrate", url: "https://www.bankrate.com/mortgages/", description: "Compare mortgage rates" },
-  { name: "NerdWallet", url: "https://www.nerdwallet.com/mortgages", description: "Mortgage guides and calculators" },
-  { name: "LendingTree", url: "https://www.lendingtree.com", description: "Compare lenders and rates" },
-  { name: "Rocket Mortgage", url: "https://www.rocketmortgage.com", description: "Online mortgage lender" },
+  { name: "Wallonie Logement", url: "https://logement.wallonie.be/fr/bail/modeles-baux-annexes", description: "Modèles de contrats de bail - Wallonie" },
+  { name: "Bruxelles Logement", url: "https://be.brussels/fr/logement/location/bail-dhabitation/contrat-de-bail-modeles-et-annexe", description: "Modèles de contrats de bail - Bruxelles" },
+  { name: "SPF Finances", url: "https://fin.belgium.be/fr/particuliers/habitation/louer-donner-location/contrat-bail", description: "Enregistrer (ou consulter) un contrat de bail" },
+  { name: "Wallonie Logement", url: "https://logement.wallonie.be/fr/page/aides-liees-a-la-realisation-de-travaux-de-renovation-et-economies-d-energie", description: "Voir le délai de traitement des primes en Wallonie" },
+  { name: "OpenPermitsBrussels", url: "https://openpermits.brussels/", description: "Voir les permis octroyés à Bruxelles (vision des projets à venir)" },
 ];
 
-const financerResources = [
-  { name: "NeighborhoodScout", url: "https://www.neighborhoodscout.com", description: "Crime, schools, and demographics data" },
-  { name: "Investopedia Real Estate", url: "https://www.investopedia.com/real-estate-4427792", description: "Educational articles and guides" },
-  { name: "Census Bureau", url: "https://data.census.gov", description: "Official demographic data" },
-  { name: "FRED Housing Data", url: "https://fred.stlouisfed.org/categories/97", description: "Federal Reserve housing statistics" },
+const monBienSites = [
+  { name: "Immoweb", url: "https://www.immoweb.be/fr" },
+  { name: "Zimmo", url: "https://www.zimmo.be/fr/" },
+  { name: "Immovlan", url: "https://www.zimmo.be/fr/" },
+  { name: "Notaire.be", url: "https://immo.notaire.be/fr/" },
+  { name: "Realo", url: "https://www.realo.be/fr" },
+  { name: "Biddit", url: "https://www.biddit.be/fr/landing" },
+  { name: "Finimmoweb", url: "https://www.finimmoweb.be/fr" },
+  { name: "Immoscoop", url: "https://www.immoscoop.be/fr" },
 ];
 
 const Index = () => {
@@ -47,7 +60,7 @@ const Index = () => {
         <ResourceList id="verifier" title="Vérifier" resources={verifierResources} />
         <ResourceList id="rechercher" title="Rechercher" resources={rechercherResources} />
         <ResourceList id="ressources" title="Ressources" resources={ressourcesResources} />
-        <ResourceList id="financer" title="Financer" resources={financerResources} />
+        <SiteGrid id="mon-bien" title="Mon bien" sites={monBienSites} />
       </main>
       <Footer />
     </div>
