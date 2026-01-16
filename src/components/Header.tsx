@@ -13,21 +13,27 @@ const Header = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-2">
-            <a href="#calculer" className="text-sm text-muted-foreground hover:text-foreground hover:bg-amber-100 dark:hover:bg-amber-900/30 px-3 py-2 rounded-md transition-all">
+          <div className="hidden md:flex items-center divide-x divide-border">
+            <a href="#calculer" className="text-sm text-muted-foreground hover:text-foreground hover:font-bold hover:scale-105 hover:bg-amber-100 dark:hover:bg-amber-900/30 px-3 py-2 transition-all">
               Calculer
             </a>
-            <a href="#verifier" className="text-sm text-muted-foreground hover:text-foreground hover:bg-amber-100 dark:hover:bg-amber-900/30 px-3 py-2 rounded-md transition-all">
+            <a href="#verifier" className="text-sm text-muted-foreground hover:text-foreground hover:font-bold hover:scale-105 hover:bg-amber-100 dark:hover:bg-amber-900/30 px-3 py-2 transition-all">
               Vérifier
             </a>
-            <a href="#rechercher" className="text-sm text-muted-foreground hover:text-foreground hover:bg-amber-100 dark:hover:bg-amber-900/30 px-3 py-2 rounded-md transition-all">
+            <a href="#rechercher" className="text-sm text-muted-foreground hover:text-foreground hover:font-bold hover:scale-105 hover:bg-amber-100 dark:hover:bg-amber-900/30 px-3 py-2 transition-all">
               Rechercher
             </a>
-            <a href="#ressources" className="text-sm text-muted-foreground hover:text-foreground hover:bg-amber-100 dark:hover:bg-amber-900/30 px-3 py-2 rounded-md transition-all">
+            <a href="#ressources" className="text-sm text-muted-foreground hover:text-foreground hover:font-bold hover:scale-105 hover:bg-amber-100 dark:hover:bg-amber-900/30 px-3 py-2 transition-all">
               Ressources
             </a>
-            <a href="#mon-bien" className="text-sm text-muted-foreground hover:text-foreground hover:bg-amber-100 dark:hover:bg-amber-900/30 px-3 py-2 rounded-md transition-all">
-              Mon bien
+            <a href="#trouver-mon-bien" className="text-sm text-muted-foreground hover:text-foreground hover:font-bold hover:scale-105 hover:bg-amber-100 dark:hover:bg-amber-900/30 px-3 py-2 transition-all">
+              Trouver mon bien
+            </a>
+            <a href="#podcasts" className="text-sm text-muted-foreground hover:text-foreground hover:font-bold hover:scale-105 hover:bg-amber-100 dark:hover:bg-amber-900/30 px-3 py-2 transition-all">
+              Podcasts
+            </a>
+            <a href="#creation" className="text-sm text-muted-foreground hover:text-foreground hover:font-bold hover:scale-105 hover:bg-amber-100 dark:hover:bg-amber-900/30 px-3 py-2 transition-all">
+              Création
             </a>
           </div>
 
@@ -43,21 +49,27 @@ const Header = () => {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden border-t border-border py-4 animate-fade-in">
-            <div className="flex flex-col gap-1">
-              <a href="#calculer" onClick={() => setIsMenuOpen(false)} className="text-sm text-muted-foreground hover:text-foreground hover:bg-amber-100 dark:hover:bg-amber-900/30 px-3 py-2 rounded-md transition-all">
+            <div className="flex flex-col divide-y divide-border">
+              <a href="#calculer" onClick={() => setIsMenuOpen(false)} className="text-sm text-muted-foreground hover:text-foreground hover:font-bold hover:scale-105 hover:bg-amber-100 dark:hover:bg-amber-900/30 px-3 py-2 transition-all">
                 Calculer
               </a>
-              <a href="#verifier" onClick={() => setIsMenuOpen(false)} className="text-sm text-muted-foreground hover:text-foreground hover:bg-amber-100 dark:hover:bg-amber-900/30 px-3 py-2 rounded-md transition-all">
+              <a href="#verifier" onClick={() => setIsMenuOpen(false)} className="text-sm text-muted-foreground hover:text-foreground hover:font-bold hover:scale-105 hover:bg-amber-100 dark:hover:bg-amber-900/30 px-3 py-2 transition-all">
                 Vérifier
               </a>
-              <a href="#rechercher" onClick={() => setIsMenuOpen(false)} className="text-sm text-muted-foreground hover:text-foreground hover:bg-amber-100 dark:hover:bg-amber-900/30 px-3 py-2 rounded-md transition-all">
+              <a href="#rechercher" onClick={() => setIsMenuOpen(false)} className="text-sm text-muted-foreground hover:text-foreground hover:font-bold hover:scale-105 hover:bg-amber-100 dark:hover:bg-amber-900/30 px-3 py-2 transition-all">
                 Rechercher
               </a>
-              <a href="#ressources" onClick={() => setIsMenuOpen(false)} className="text-sm text-muted-foreground hover:text-foreground hover:bg-amber-100 dark:hover:bg-amber-900/30 px-3 py-2 rounded-md transition-all">
+              <a href="#ressources" onClick={() => setIsMenuOpen(false)} className="text-sm text-muted-foreground hover:text-foreground hover:font-bold hover:scale-105 hover:bg-amber-100 dark:hover:bg-amber-900/30 px-3 py-2 transition-all">
                 Ressources
               </a>
-              <a href="#mon-bien" onClick={() => setIsMenuOpen(false)} className="text-sm text-muted-foreground hover:text-foreground hover:bg-amber-100 dark:hover:bg-amber-900/30 px-3 py-2 rounded-md transition-all">
-                Mon bien
+              <a href="#trouver-mon-bien" onClick={() => setIsMenuOpen(false)} className="text-sm text-muted-foreground hover:text-foreground hover:font-bold hover:scale-105 hover:bg-amber-100 dark:hover:bg-amber-900/30 px-3 py-2 transition-all">
+                Trouver mon bien
+              </a>
+              <a href="#podcasts" onClick={() => setIsMenuOpen(false)} className="text-sm text-muted-foreground hover:text-foreground hover:font-bold hover:scale-105 hover:bg-amber-100 dark:hover:bg-amber-900/30 px-3 py-2 transition-all">
+                Podcasts
+              </a>
+              <a href="#creation" onClick={() => setIsMenuOpen(false)} className="text-sm text-muted-foreground hover:text-foreground hover:font-bold hover:scale-105 hover:bg-amber-100 dark:hover:bg-amber-900/30 px-3 py-2 transition-all">
+                Création
               </a>
             </div>
           </div>

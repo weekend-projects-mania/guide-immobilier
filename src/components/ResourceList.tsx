@@ -16,7 +16,7 @@ const ResourceList = ({ id, title, resources }: ResourceListProps) => {
   return (
     <section id={id} className="py-8">
       <div className="container px-4">
-        <h2 className="text-lg font-medium text-foreground mb-4">{title}</h2>
+        <h2 className="text-lg font-bold uppercase text-black dark:text-white mb-4">{title}</h2>
         <div className="border border-border rounded-lg divide-y divide-border bg-card">
           {resources.map((resource, index) => (
             <a

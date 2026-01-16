@@ -27,8 +27,8 @@ const verifierResources = [
 const rechercherResources = [
   { name: "CadGis", url: "https://www.minfin.fgov.be/ecad-web/#/", description: "Voir le plan parcellaire cadastral Belge" },
   { name: "WalOnMap", url: "https://geoportail.wallonie.be/walonmap#BBOX=178892.28320951056,187848.44695517136,125813.219979472,129682.75896855#SHARE=91B6CCCDD457492DE053D0AFA49DA89D", description: "Voir le plan parcellaire cadastral Wallon" },
-  { name: "BruGIS", url: "https://gis.urban.brussels/brugis/#/", description: "Outil de gestion de l'aménagement du territoire de Bruxelles" },
   { name: "GeoPunt", url: "https://www.geopunt.be/", description: "Voir le plan parcellaire cadastral Flamand" },
+  { name: "BruGIS", url: "https://gis.urban.brussels/brugis/#/", description: "Outil de gestion de l'aménagement du territoire de Bruxelles" },
 ];
 
 const ressourcesResources = [
@@ -39,15 +39,33 @@ const ressourcesResources = [
   { name: "OpenPermitsBrussels", url: "https://openpermits.brussels/", description: "Voir les permis octroyés à Bruxelles (vision des projets à venir)" },
 ];
 
-const monBienSites = [
+const trouverMonBienSites = [
   { name: "Immoweb", url: "https://www.immoweb.be/fr" },
   { name: "Zimmo", url: "https://www.zimmo.be/fr/" },
-  { name: "Immovlan", url: "https://www.zimmo.be/fr/" },
+  { name: "Immovlan", url: "https://www.immovlan.be/fr" },
   { name: "Notaire.be", url: "https://immo.notaire.be/fr/" },
   { name: "Realo", url: "https://www.realo.be/fr" },
-  { name: "Biddit", url: "https://www.biddit.be/fr/landing" },
-  { name: "Finimmoweb", url: "https://www.finimmoweb.be/fr" },
+  { name: "Biddit", url: "https://www.biddit.be/fr/landing", subtitle: "(enchères)" },
+  { name: "Finimmoweb", url: "https://www.finimmoweb.be/fr", subtitle: "(enchères)" },
   { name: "Immoscoop", url: "https://www.immoscoop.be/fr" },
+];
+
+const podcastsSites = [
+  { name: "Le Rdv Des Proprios", url: "https://open.spotify.com/show/4hq7fUqMCejfKrSn28Ickb" },
+  { name: "Chez Bertrand", url: "https://open.spotify.com/show/5C4whIosYn1EiWfEYcHgky" },
+  { name: "We Invest", url: "https://open.spotify.com/show/5UjxSE8spkot7FTRVWC1Ri" },
+  { name: "Une brique après l'autre", url: "https://open.spotify.com/show/49ymRGXpQCPtHNvR3nMiwD" },
+  { name: "Immo Passion", url: "https://open.spotify.com/show/0n94kkyuepoo8h60FGg7Ea" },
+  { name: "Le Podcast Immobilier Belge", url: "https://open.spotify.com/show/2yIXZCRYYG8whCjvRUtqQm" },
+  { name: "L'immobilier sans filtre", url: "https://open.spotify.com/show/3rzb1IM7ZqmfXBd8B6nApd" },
+  { name: "Belgium Invest", url: "https://open.spotify.com/show/0OneRt2lDZdlrOrApBDz81" },
+];
+
+const creationSites = [
+  { name: "Home By Me", url: "https://home.by.me/fr/", description: "Plans 3D" },
+  { name: "Sweet Home 3D", url: "https://www.sweethome3d.com/fr/", description: "Plans 3D" },
+  { name: "Houzz", url: "https://www.houzz.fr/", description: "Inspiration déco" },
+  { name: "IKEA", url: "https://www.ikea.com/be/fr/planners/#72bfd7d0-1a4d-11e9-8dfd-b5e1e20c2465", description: "Outils de planification" },
 ];
 
 const Index = () => {
@@ -60,7 +78,9 @@ const Index = () => {
         <ResourceList id="verifier" title="Vérifier" resources={verifierResources} />
         <ResourceList id="rechercher" title="Rechercher" resources={rechercherResources} />
         <ResourceList id="ressources" title="Ressources" resources={ressourcesResources} />
-        <SiteGrid id="mon-bien" title="Mon bien" sites={monBienSites} />
+        <SiteGrid id="trouver-mon-bien" title="Trouver mon bien" sites={trouverMonBienSites} />
+        <SiteGrid id="podcasts" title="Podcasts" sites={podcastsSites} />
+        <SiteGrid id="creation" title="Création" sites={creationSites} />
       </main>
       <Footer />
     </div>
