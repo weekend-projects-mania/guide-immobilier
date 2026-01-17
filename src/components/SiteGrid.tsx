@@ -3,6 +3,7 @@ interface Site {
   url: string;
   subtitle?: string;
   description?: string;
+  logoUrl?: string;
 }
 
 interface SiteGridProps {
@@ -21,6 +22,13 @@ const SiteGrid = ({ id, title, sites }: SiteGridProps) => {
     }
   };
 
+  const getLogoUrl = (site: Site) => {
+    if (site.logoUrl) {
+      return site.logoUrl;
+    }
+    return getFaviconUrl(site.url);
+  };
+
   return (
     <section id={id} className="py-8">
       <div className="container px-4">
@@ -35,9 +43,13 @@ const SiteGrid = ({ id, title, sites }: SiteGridProps) => {
               className="flex flex-col items-center justify-center p-6 border border-border rounded-lg bg-card hover:bg-accent/50 hover:border-primary/50 transition-all group"
             >
               <img
-                src={getFaviconUrl(site.url)}
+                src={getLogoUrl(site)}
                 alt={`${site.name} logo`}
                 className="w-12 h-12 mb-3 object-contain"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src = getFaviconUrl(site.url);
+                }}
               />
               <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors text-center">
                 {site.name}
