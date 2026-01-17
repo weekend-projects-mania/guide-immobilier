@@ -27,14 +27,18 @@ const ResourceList = ({ id, title, resources }: ResourceListProps) => {
               className="flex items-center justify-between p-4 hover:bg-accent/50 transition-colors group"
             >
               <div className="min-w-0 flex-1">
-                <div className="font-medium text-foreground group-hover:text-primary transition-colors">
+                <div className="font-medium text-black dark:text-white group-hover:text-primary transition-colors">
                   {resource.description}
                 </div>
                 <div className="text-sm text-muted-foreground truncate">
                   {resource.name}
                 </div>
               </div>
-              <Button variant="outline" size="sm" className="ml-4 flex-shrink-0">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                className="ml-4 flex-shrink-0 hover:bg-orange-400/40 hover:border-orange-400/60 transition-colors"
+              >
                 Visiter
               </Button>
             </a>
