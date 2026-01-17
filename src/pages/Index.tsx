@@ -19,7 +19,7 @@ const calculerResources = [
 
 const verifierResources = [
   { name: "Banque Nationale de Belgique (BNB)", url: "https://www.nbb.be/fr/centrales-des-credits/centrale-des-credits-aux-particuliers-ccp/consulter/informations-pour-les", description: "Consulter les crédits liés à mon nom" },
-  { name: "Izimi - par Fednot", url: "https://app.izimi.be/?lng=fr", description: "Retrouver les actes notariés liés à son nom" },
+  { name: "Izimi - par Fednot", url: "https://app.izimi.be/?lng=fr", description: "Retrouver les actes notariés liés à mon nom" },
   { name: "Banque Nationale de Belgique (BNB)", url: "https://www.nbb.be/fr/centrale-des-bilans/consulter/consult", description: "Consulter les comptes annuels d'une entreprise" },
   { name: "Banque-Carrefour des Entreprises (BCE)", url: "https://kbopub.economie.fgov.be/kbopub/zoeknummerform.html", description: "Vérifier si une entreprise est toujours active (et ses activités)" },
   { name: "ONSS", url: "https://www.checkobligationderetenue.be/", description: "Vérifier si une entreprise a des dettes sociales ou fiscales" },
@@ -58,20 +58,30 @@ const trouverMonBienSites = [
   { name: "Immoscoop", url: "https://www.immoscoop.be/fr" },
 ];
 
+import LeRdvDesPropriosLogo from "@/assets/Le_Rdv_Des_Proprios.jpg";
+import ChezBertrandLogo from "@/assets/Chez_Bertrand.jpg";
+import ConseilImmoLogo from "@/assets/Conseil_Immo_We_Invest.jpg";
+import UneBriqueApresLautreLogo from "@/assets/Une_brique_apres_lautre.jpg";
+import ImmoPassionLogo from "@/assets/Immo_Passion.jpg";
+import PodcastImmobilierBelgeLogo from "@/assets/Podcast_Immobilier_Belge.jpg";
+import ImmobilierSansFiltreLogo from "@/assets/Immobilier_sans_filtre.jpg";
+import BelgiumInvestLogo from "@/assets/Belgium_invest.jpg";
+import SweetHome3DLogo from "@/assets/SweetHome3DLogo.png";
+
 const podcastsSites = [
-  { name: "Le Rdv Des Proprios", url: "https://open.spotify.com/show/4hq7fUqMCejfKrSn28Ickb", logoUrl: "https://i.scdn.co/image/ab6765630000ba8a5d52a41b7f90c4f5e32e1de6" },
-  { name: "Chez Bertrand", url: "https://open.spotify.com/show/5C4whIosYn1EiWfEYcHgky", logoUrl: "https://i.scdn.co/image/ab6765630000ba8a8d0c6be5e3f8a7e83e5d2c94" },
-  { name: "We Invest", url: "https://open.spotify.com/show/5UjxSE8spkot7FTRVWC1Ri", logoUrl: "https://i.scdn.co/image/ab6765630000ba8a64c6d9c3d3a3f0c9a7b8e2d1" },
-  { name: "Une brique après l'autre", url: "https://open.spotify.com/show/49ymRGXpQCPtHNvR3nMiwD", logoUrl: "https://i.scdn.co/image/ab6765630000ba8a7d5a2e1c8d9f3b4a6c7e8f01" },
-  { name: "Immo Passion", url: "https://open.spotify.com/show/0n94kkyuepoo8h60FGg7Ea", logoUrl: "https://i.scdn.co/image/ab6765630000ba8a2c4d5e6f7a8b9c0d1e2f3a4b" },
-  { name: "Le Podcast Immobilier Belge", url: "https://open.spotify.com/show/2yIXZCRYYG8whCjvRUtqQm", logoUrl: "https://i.scdn.co/image/ab6765630000ba8a3d4e5f6a7b8c9d0e1f2a3b4c" },
-  { name: "L'immobilier sans filtre", url: "https://open.spotify.com/show/3rzb1IM7ZqmfXBd8B6nApd", logoUrl: "https://i.scdn.co/image/ab6765630000ba8a4e5f6a7b8c9d0e1f2a3b4c5d" },
-  { name: "Belgium Invest", url: "https://open.spotify.com/show/0OneRt2lDZdlrOrApBDz81", logoUrl: "https://i.scdn.co/image/ab6765630000ba8a5f6a7b8c9d0e1f2a3b4c5d6e" },
+  { name: "Le Rdv Des Proprios", url: "https://open.spotify.com/show/4hq7fUqMCejfKrSn28Ickb", logoUrl: LeRdvDesPropriosLogo },
+  { name: "Chez Bertrand", url: "https://open.spotify.com/show/5C4whIosYn1EiWfEYcHgky", logoUrl: ChezBertrandLogo },
+  { name: "Conseil Immo - by We Invest", url: "https://open.spotify.com/show/5UjxSE8spkot7FTRVWC1Ri", logoUrl: ConseilImmoLogo },
+  { name: "Une brique après l'autre", url: "https://open.spotify.com/show/49ymRGXpQCPtHNvR3nMiwD", logoUrl: UneBriqueApresLautreLogo },
+  { name: "Immo Passion", url: "https://open.spotify.com/show/0n94kkyuepoo8h60FGg7Ea", logoUrl: ImmoPassionLogo },
+  { name: "Le Podcast Immobilier Belge", url: "https://open.spotify.com/show/2yIXZCRYYG8whCjvRUtqQm", logoUrl: PodcastImmobilierBelgeLogo },
+  { name: "L'immobilier sans filtre", url: "https://open.spotify.com/show/3rzb1IM7ZqmfXBd8B6nApd", logoUrl: ImmobilierSansFiltreLogo },
+  { name: "Belgium Invest", url: "https://open.spotify.com/show/0OneRt2lDZdlrOrApBDz81", logoUrl: BelgiumInvestLogo },
 ];
 
 const creationSites = [
   { name: "Home By Me", url: "https://home.by.me/fr/", description: "Plans 3D" },
-  { name: "Sweet Home 3D", url: "https://www.sweethome3d.com/fr/", description: "Plans 3D", logoUrl: "https://www.sweethome3d.com/images/SweetHome3DIcon.png" },
+  { name: "Sweet Home 3D", url: "https://www.sweethome3d.com/fr/", description: "Plans 3D", logoUrl: SweetHome3DLogo },
   { name: "Houzz", url: "https://www.houzz.fr/", description: "Inspiration déco" },
   { name: "IKEA", url: "https://www.ikea.com/be/fr/planners/#72bfd7d0-1a4d-11e9-8dfd-b5e1e20c2465", description: "Outils de planification" },
 ];
