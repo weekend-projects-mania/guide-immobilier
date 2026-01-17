@@ -15,25 +15,25 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center divide-x divide-border">
-            <a href="#calculer" className="text-sm font-bold uppercase text-black dark:text-white hover:scale-105 hover:font-extrabold hover:bg-orange-400/40 px-3 py-2 rounded-md transition-all">
+            <a href="#calculer" className="text-sm font-medium text-black dark:text-white hover:scale-105 hover:font-bold hover:bg-orange-400/40 px-3 py-2 rounded-md transition-all">
               Calculer
             </a>
-            <a href="#verifier" className="text-sm font-bold uppercase text-black dark:text-white hover:scale-105 hover:font-extrabold hover:bg-orange-400/40 px-3 py-2 rounded-md transition-all">
+            <a href="#verifier" className="text-sm font-medium text-black dark:text-white hover:scale-105 hover:font-bold hover:bg-orange-400/40 px-3 py-2 rounded-md transition-all">
               Vérifier
             </a>
-            <a href="#rechercher" className="text-sm font-bold uppercase text-black dark:text-white hover:scale-105 hover:font-extrabold hover:bg-orange-400/40 px-3 py-2 rounded-md transition-all">
+            <a href="#rechercher" className="text-sm font-medium text-black dark:text-white hover:scale-105 hover:font-bold hover:bg-orange-400/40 px-3 py-2 rounded-md transition-all">
               Rechercher
             </a>
-            <a href="#ressources" className="text-sm font-bold uppercase text-black dark:text-white hover:scale-105 hover:font-extrabold hover:bg-orange-400/40 px-3 py-2 rounded-md transition-all">
+            <a href="#ressources" className="text-sm font-medium text-black dark:text-white hover:scale-105 hover:font-bold hover:bg-orange-400/40 px-3 py-2 rounded-md transition-all">
               Ressources
             </a>
-            <a href="#trouver-mon-bien" className="text-sm font-bold uppercase text-black dark:text-white hover:scale-105 hover:font-extrabold hover:bg-orange-400/40 px-3 py-2 rounded-md transition-all">
+            <a href="#trouver-mon-bien" className="text-sm font-medium text-black dark:text-white hover:scale-105 hover:font-bold hover:bg-orange-400/40 px-3 py-2 rounded-md transition-all">
               Trouver mon bien
             </a>
-            <a href="#podcasts" className="text-sm font-bold uppercase text-black dark:text-white hover:scale-105 hover:font-extrabold hover:bg-orange-400/40 px-3 py-2 rounded-md transition-all">
+            <a href="#podcasts" className="text-sm font-medium text-black dark:text-white hover:scale-105 hover:font-bold hover:bg-orange-400/40 px-3 py-2 rounded-md transition-all">
               Podcasts
             </a>
-            <a href="#creation" className="text-sm font-bold uppercase text-black dark:text-white hover:scale-105 hover:font-extrabold hover:bg-orange-400/40 px-3 py-2 rounded-md transition-all">
+            <a href="#creation" className="text-sm font-medium text-black dark:text-white hover:scale-105 hover:font-bold hover:bg-orange-400/40 px-3 py-2 rounded-md transition-all">
               Création
             </a>
           </div>
@@ -53,25 +53,25 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-border">
             <div className="flex flex-col space-y-2">
-              <a href="#calculer" className="text-sm font-bold uppercase text-black dark:text-white hover:bg-orange-400/40 px-3 py-2 rounded-md transition-colors" onClick={() => setIsMenuOpen(false)}>
+              <a href="#calculer" className="text-sm font-medium text-black dark:text-white hover:bg-orange-400/40 px-3 py-2 rounded-md transition-colors" onClick={() => setIsMenuOpen(false)}>
                 Calculer
               </a>
-              <a href="#verifier" className="text-sm font-bold uppercase text-black dark:text-white hover:bg-orange-400/40 px-3 py-2 rounded-md transition-colors" onClick={() => setIsMenuOpen(false)}>
+              <a href="#verifier" className="text-sm font-medium text-black dark:text-white hover:bg-orange-400/40 px-3 py-2 rounded-md transition-colors" onClick={() => setIsMenuOpen(false)}>
                 Vérifier
               </a>
-              <a href="#rechercher" className="text-sm font-bold uppercase text-black dark:text-white hover:bg-orange-400/40 px-3 py-2 rounded-md transition-colors" onClick={() => setIsMenuOpen(false)}>
+              <a href="#rechercher" className="text-sm font-medium text-black dark:text-white hover:bg-orange-400/40 px-3 py-2 rounded-md transition-colors" onClick={() => setIsMenuOpen(false)}>
                 Rechercher
               </a>
-              <a href="#ressources" className="text-sm font-bold uppercase text-black dark:text-white hover:bg-orange-400/40 px-3 py-2 rounded-md transition-colors" onClick={() => setIsMenuOpen(false)}>
+              <a href="#ressources" className="text-sm font-medium text-black dark:text-white hover:bg-orange-400/40 px-3 py-2 rounded-md transition-colors" onClick={() => setIsMenuOpen(false)}>
                 Ressources
               </a>
-              <a href="#trouver-mon-bien" className="text-sm font-bold uppercase text-black dark:text-white hover:bg-orange-400/40 px-3 py-2 rounded-md transition-colors" onClick={() => setIsMenuOpen(false)}>
+              <a href="#trouver-mon-bien" className="text-sm font-medium text-black dark:text-white hover:bg-orange-400/40 px-3 py-2 rounded-md transition-colors" onClick={() => setIsMenuOpen(false)}>
                 Trouver mon bien
               </a>
-              <a href="#podcasts" className="text-sm font-bold uppercase text-black dark:text-white hover:bg-orange-400/40 px-3 py-2 rounded-md transition-colors" onClick={() => setIsMenuOpen(false)}>
+              <a href="#podcasts" className="text-sm font-medium text-black dark:text-white hover:bg-orange-400/40 px-3 py-2 rounded-md transition-colors" onClick={() => setIsMenuOpen(false)}>
                 Podcasts
               </a>
-              <a href="#creation" className="text-sm font-bold uppercase text-black dark:text-white hover:bg-orange-400/40 px-3 py-2 rounded-md transition-colors" onClick={() => setIsMenuOpen(false)}>
+              <a href="#creation" className="text-sm font-medium text-black dark:text-white hover:bg-orange-400/40 px-3 py-2 rounded-md transition-colors" onClick={() => setIsMenuOpen(false)}>
                 Création
               </a>
             </div>
