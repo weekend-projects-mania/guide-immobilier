@@ -10,7 +10,7 @@ const Header = () => {
       <div className="container px-4">
         <nav className="flex items-center justify-between h-14">
           <a href="/" className="text-lg font-semibold text-foreground">
-            Le Guide Immobilier <span role="img" aria-label="Drapeau belge">🇧🇪</span>
+            Le <span className="bg-black text-white px-1">Guide</span> Immobilier <span role="img" aria-label="Drapeau belge">🇧🇪</span>
           </a>
 
           {/* Desktop Navigation */}
