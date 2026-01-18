@@ -12,23 +12,6 @@ interface ResourceListProps {
   resources: Resource[];
 }
 
-// Colors from the palette, arranged for harmony (similar colors spaced apart)
-const buttonColors = [
-  "#F5A25D", // orange
-  "#4F8FE3", // blue
-  "#4CAF88", // green
-  "#F08C7C", // salmon
-  "#5AC8C8", // cyan
-  "#B28AD8", // purple
-  "#F2C86A", // yellow
-  "#3FB6B2", // teal
-  "#E88B4A", // dark orange
-  "#63B7E6", // light blue
-  "#9ACB7C", // lime green
-  "#D8A1C4", // pink
-  "#57B6B2", // teal variant
-  "#7BCFA6", // light green
-];
 
 const ResourceList = ({ id, title, resources }: ResourceListProps) => {
   return (
@@ -37,7 +20,7 @@ const ResourceList = ({ id, title, resources }: ResourceListProps) => {
         <h2 className="text-lg font-bold uppercase text-black dark:text-white mb-4">{title}</h2>
         <div className="border border-border rounded-lg divide-y divide-border bg-card">
           {resources.map((resource, index) => {
-            const bgColor = buttonColors[index % buttonColors.length];
+            const isBlack = index % 2 === 0;
             return (
               <a
                 key={`${resource.name}-${index}`}
@@ -57,8 +40,11 @@ const ResourceList = ({ id, title, resources }: ResourceListProps) => {
                 <Button 
                   variant="outline" 
                   size="sm" 
-                  className="ml-4 flex-shrink-0 text-white border-transparent transition-colors"
-                  style={{ backgroundColor: bgColor }}
+                  className={`ml-4 flex-shrink-0 border transition-colors ${
+                    isBlack 
+                      ? 'bg-black text-white border-black hover:bg-gray-800' 
+                      : 'bg-white text-black border-black hover:bg-gray-100'
+                  }`}
                 >
                   Visiter
                 </Button>
