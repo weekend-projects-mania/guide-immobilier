@@ -40,10 +40,10 @@ const ResourceList = ({ id, title, resources }: ResourceListProps) => {
                 <Button 
                   variant="outline" 
                   size="sm" 
-                  className={`ml-4 flex-shrink-0 border transition-colors ${
+                  className={`ml-4 flex-shrink-0 border ${
                     isBlack 
-                      ? 'bg-black text-white border-black hover:bg-white hover:text-black' 
-                      : 'bg-white text-black border-black hover:bg-black hover:text-white'
+                      ? 'bg-black text-white border-black hover:bg-black hover:text-white' 
+                      : 'bg-white text-black border-black hover:bg-white hover:text-black'
                   }`}
                 >
                   Visiter
