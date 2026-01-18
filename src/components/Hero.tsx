@@ -6,7 +6,7 @@ const Hero = () => {
           Ton site immo fav<span style={{ color: 'black', WebkitTextStroke: '1px red' }}>♥</span>ri !
         </h1>
         <p className="bg-black text-white px-3 py-2 inline-block max-w-xl">
-          S'informer pour acheter malin - les sites utiles pour vos projets immobiliers
+          S'informer pour acheter malin - TOUS les sites utiles pour vos projets immobiliers
         </p>
       </div>
     </section>

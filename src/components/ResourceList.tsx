@@ -42,8 +42,8 @@ const ResourceList = ({ id, title, resources }: ResourceListProps) => {
                   size="sm" 
                   className={`ml-4 flex-shrink-0 border transition-colors ${
                     isBlack 
-                      ? 'bg-black text-white border-black hover:bg-gray-800 hover:text-white' 
-                      : 'bg-white text-black border-black hover:bg-gray-100 hover:text-black'
+                      ? 'bg-black text-white border-black hover:bg-white hover:text-black' 
+                      : 'bg-white text-black border-black hover:bg-black hover:text-white'
                   }`}
                 >
                   Visiter
