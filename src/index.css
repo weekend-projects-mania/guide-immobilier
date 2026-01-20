@@ -44,6 +44,10 @@
     --sidebar-accent-foreground: 220 10% 20%;
     --sidebar-border: 220 10% 90%;
     --sidebar-ring: 220 15% 40%;
+
+    /* Brand detail: hero heart (keep consistent across platforms, incl. iOS) */
+    --brand-heart-fill: 0 0% 0%;
+    --brand-heart-stroke: 0 84% 55%;
   }
 
   .dark {
@@ -83,6 +87,21 @@
     --sidebar-accent-foreground: 220 10% 90%;
     --sidebar-border: 220 15% 20%;
     --sidebar-ring: 220 10% 70%;
+
+    /* Keep the heart styling identical in dark mode (requested black + red stroke) */
+    --brand-heart-fill: 0 0% 0%;
+    --brand-heart-stroke: 0 84% 55%;
+  }
+}
+
+@layer utilities {
+  /* SVG icon sizing/alignment so it matches lowercase letter height in the hero title */
+  .hero-heart {
+    display: inline-block;
+    width: 0.85em;
+    height: 0.85em;
+    vertical-align: -0.1em;
+    margin: 0 0.02em;
   }
 }
 
