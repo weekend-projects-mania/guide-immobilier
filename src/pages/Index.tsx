@@ -23,16 +23,19 @@ const verifierResources = [
   { name: "Banque Nationale de Belgique (BNB)", url: "https://www.nbb.be/fr/centrale-des-bilans/consulter/consult", description: "Consulter les comptes annuels d'une entreprise" },
   { name: "Banque-Carrefour des Entreprises (BCE)", url: "https://kbopub.economie.fgov.be/kbopub/zoeknummerform.html", description: "Vérifier si une entreprise est toujours active (et ses activités)" },
   { name: "ONSS", url: "https://www.checkobligationderetenue.be/", description: "Vérifier si une entreprise a des dettes sociales ou fiscales" },
+  { name: "SPW Energie", url: "https://www.registrepeb.be/#/", description: "Registre des certificats PEB - Wallonie" },
+  { name: "Bruxelles environnement", url: "https://www.peb-epb.brussels/certificats-certificaten/", description: "Registre des certificats PEB - Bruxelles" },
 ];
 
 const rechercherResources = [
   { name: "CadGis", url: "https://www.minfin.fgov.be/ecad-web/#/", description: "Voir le plan parcellaire cadastral Belge" },
   { name: "WalOnMap", url: "https://geoportail.wallonie.be/walonmap#BBOX=178892.28320951056,187848.44695517136,125813.219979472,129682.75896855#SHARE=91B6CCCDD457492DE053D0AFA49DA89D", description: "Voir le plan parcellaire cadastral Wallon" },
-  { name: "BruGIS", url: "https://gis.urban.brussels/brugis/#/", description: "Outil de gestion de l'aménagement du territoire de Bruxelles" },
   { name: "GeoPunt", url: "https://www.geopunt.be/", description: "Voir le plan parcellaire cadastral Flamand" },
+  { name: "BruGIS", url: "https://gis.urban.brussels/brugis/#/", description: "Outil de gestion de l'aménagement du territoire de Bruxelles" },
   { name: "Google Maps", url: "https://www.google.com/maps", description: "Visualiser une adresse et son quartier (cartographie et StreetVue)" },
   { name: "Google Earth", url: "https://www.google.com/maps", description: "Visualiser une adresse et son quartier (vue aérienne)" },
   { name: "Notaire.be", url: "https://www.notaire.be/notaire/recherchez", description: "Trouver un notaire près de chez soi" },
+  { name: "Statbel", url: "https://statbel.fgov.be/fr/themes/construction-logement/prix-de-limmobilier", description: "Statistiques sur le prix de l'immobilier par communes / provinces / régions" },
 ];
 
 const ressourcesResources = [
@@ -41,6 +44,7 @@ const ressourcesResources = [
   { name: "SPF Finances", url: "https://fin.belgium.be/fr/particuliers/habitation/louer-donner-location/contrat-bail", description: "Enregistrer (ou consulter) un contrat de bail" },
   { name: "Wallonie Logement", url: "https://logement.wallonie.be/fr/page/aides-liees-a-la-realisation-de-travaux-de-renovation-et-economies-d-energie", description: "Voir le délai de traitement des primes en Wallonie" },
   { name: "OpenPermitsBrussels", url: "https://openpermits.brussels/", description: "Voir les permis octroyés à Bruxelles (vision des projets à venir)" },
+  { name: "Geoportail Wallonie", url: "https://geoportail.wallonie.be/catalogue/4572f901-7d5e-4fe6-931e-ac19c8fc04fe.html#Carte", description: "Voir les permis d'urbanisation et lotissements en Wallonie" },
   { name: "Wallonie Logement", url: "https://logement.wallonie.be/fr/aides", description: "Aides et primes de la région Wallonne" },
   { name: "Vlaanderen", url: "https://www.vlaanderen.be/premies-voor-renovatie/mijn-verbouwpremie", description: "Aides et primes de la région Flamande" },
   { name: "Notaire.be", url: "https://www.notaire.be/actualites/modele-doffre-dachat-pour-la-wallonie-telecharger", description: "Modèle d'une offre d'achat - Wallonie" },
