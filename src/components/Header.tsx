@@ -9,8 +9,18 @@ const Header = () => {
     <header className="border-b border-border bg-background sticky top-0 z-50">
       <div className="container px-4">
         <nav className="flex items-center justify-between h-14">
-          <a href="/" className="text-lg font-semibold text-foreground">
-            Le <span className="bg-black text-white px-1">Guide</span> Immobilier <span role="img" aria-label="Drapeau belge">🇧🇪</span>
+          <a href="/" className="text-lg font-semibold text-foreground flex items-center gap-1">
+            Le <span className="bg-black text-white px-1">Guide</span> Immobilier
+            <svg
+              aria-label="Drapeau belge"
+              className="inline-block w-5 h-4"
+              viewBox="0 0 900 600"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect width="300" height="600" fill="#000" />
+              <rect x="300" width="300" height="600" fill="#FAE042" />
+              <rect x="600" width="300" height="600" fill="#ED2939" />
+            </svg>
           </a>
 
           {/* Desktop Navigation */}
