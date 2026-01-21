@@ -15,7 +15,7 @@ const Hero = () => {
           />
           ri !
         </h1>
-        <p className="bg-black text-white px-3 py-2 inline-block max-w-xl">
+        <p className="text-foreground border-2 border-foreground rounded-2xl px-4 py-3 inline-block max-w-xl">
           S'informer pour acheter malin - TOUS les sites utiles pour vos projets immobiliers
         </p>
       </div>
