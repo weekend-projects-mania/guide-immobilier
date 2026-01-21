@@ -4,7 +4,7 @@ const Hero = () => {
   return (
     <section className="pt-16 pb-8 md:py-24">
       <div className="container px-4 text-center md:text-left">
-        <h1 className="text-4xl md:text-5xl font-semibold text-foreground mb-6">
+        <h1 className="text-[2.1rem] md:text-[2.85rem] font-semibold text-foreground mb-6">
           Ton site immo fav
           <Heart
             aria-hidden="true"
