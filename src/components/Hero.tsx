@@ -2,9 +2,9 @@ import { Heart } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="pt-16 pb-8 md:py-24">
-      <div className="container px-4 text-center md:text-left">
-        <h1 className="text-[2.1rem] md:text-[2.85rem] font-semibold text-foreground mb-6">
+    <section className="py-16 md:py-24">
+      <div className="container px-4">
+        <h1 className="text-3xl md:text-4xl font-semibold text-foreground mb-3">
           Ton site immo fav
           <Heart
             aria-hidden="true"
@@ -15,7 +15,7 @@ const Hero = () => {
           />
           ri !
         </h1>
-        <p className="text-sm text-foreground border-2 border-foreground rounded-2xl px-3 py-2 inline-block max-w-md">
+        <p className="bg-black text-white px-3 py-2 inline-block max-w-xl">
           S'informer pour acheter malin - TOUS les sites utiles pour vos projets immobiliers
         </p>
       </div>
