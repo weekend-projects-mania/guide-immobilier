@@ -42,7 +42,7 @@ const ResourceList = ({ id, title, resources }: ResourceListProps) => {
                   <div className="font-medium text-black dark:text-white group-hover:text-primary transition-colors flex items-center gap-2">
                     {resource.description}
                     {showNewBadge && (
-                      <span className="inline-block w-2 h-2 rounded-full bg-green-500 flex-shrink-0" title="Nouveau" />
+                      <span className="inline-block w-2 h-2 rounded-full bg-red-500 flex-shrink-0" title="Nouveau" />
                     )}
                   </div>
                   <div className="text-sm text-muted-foreground truncate">
