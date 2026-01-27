@@ -99,10 +99,12 @@ const podcastsSites = [
   { name: "Unique (Piron Construction)", url: "https://open.spotify.com/show/62kWVwJUsuYdP2edDZiPiv", logoUrl: UniquePironLogo },
 ];
 
+import PIMbeLogo from "@/assets/PIM_be.jpg";
+
 const communautesSites = [
   { name: "Le Rdv Des Proprios", url: "https://chat.whatsapp.com/JIyOOfIkwNiFMl2ukIt5ai", subtitle: "(WhatsApp)", logoUrl: LeRdvDesPropriosLogo },
   { name: "Immo Passion", url: "https://chat.whatsapp.com/BYwpls3CXIbKPlWUSwAPkc", subtitle: "(WhatsApp)", logoUrl: ImmoPassionWhatsAppLogo },
-  { name: "PIM.be", url: "https://www.forum.pim.be", subtitle: "(Forum web)" },
+  { name: "PIM.be", url: "https://www.forum.pim.be", subtitle: "(Forum web)", logoUrl: PIMbeLogo },
   { name: "BricoZone.be", url: "https://www.bricozone.be", subtitle: "(Forum web)", logoUrl: BricoZoneLogo },
 ];
 

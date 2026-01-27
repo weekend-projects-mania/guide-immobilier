@@ -135,7 +135,7 @@ const Header = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onFocus={() => setIsSearchFocused(true)}
-                className="pl-9 h-9 bg-white dark:bg-black border-black dark:border-white text-black dark:text-white placeholder:text-muted-foreground"
+                className="pl-9 h-6 bg-white dark:bg-black border-black dark:border-white text-black dark:text-white placeholder:text-muted-foreground rounded-full text-sm"
               />
             </div>
             {isSearchFocused && filteredResults.length > 0 && (
