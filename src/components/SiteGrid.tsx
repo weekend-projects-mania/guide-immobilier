@@ -65,7 +65,7 @@ const SiteGrid = ({ id, title, sites }: SiteGridProps) => {
                 <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors text-center flex items-center gap-1">
                   {site.name}
                   {showNewBadge && (
-                    <span className="inline-block w-2 h-2 rounded-full bg-red-500 flex-shrink-0" title="Nouveau" />
+                    <span className="inline-block w-2 h-2 rounded-full bg-green-500 flex-shrink-0" title="Nouveau" />
                   )}
                 </span>
                 {site.subtitle && (
