@@ -93,19 +93,19 @@ const podcastsSites = [
   { name: "Le Podcast Immobilier Belge", url: "https://open.spotify.com/show/2yIXZCRYYG8whCjvRUtqQm", logoUrl: PodcastImmobilierBelgeLogo },
   { name: "L'immobilier sans filtre", url: "https://open.spotify.com/show/3rzb1IM7ZqmfXBd8B6nApd", logoUrl: ImmobilierSansFiltreLogo },
   { name: "Belgium Invest", url: "https://open.spotify.com/show/0OneRt2lDZdlrOrApBDz81", logoUrl: BelgiumInvestLogo },
-  { name: "Notaires&CO", url: "https://open.spotify.com/show/3HPje2chSWx7BQWCgZISuv", logoUrl: NotairesCOLogo },
-  { name: "Monsieur Immo", url: "https://open.spotify.com/show/1iuMweZJ2Qm6MZ5rXgoYsM", logoUrl: MonsieurImmoLogo },
-  { name: "Tutos Immo de l'Echo", url: "https://open.spotify.com/show/2gno4XSFySbOcrWmbBsP7T", logoUrl: TutosImmoLogo },
-  { name: "Unique (Piron Construction)", url: "https://open.spotify.com/show/62kWVwJUsuYdP2edDZiPiv", logoUrl: UniquePironLogo },
+  { name: "Notaires&CO", url: "https://open.spotify.com/show/3HPje2chSWx7BQWCgZISuv", logoUrl: NotairesCOLogo, addedAt: "2026-01-27" },
+  { name: "Monsieur Immo", url: "https://open.spotify.com/show/1iuMweZJ2Qm6MZ5rXgoYsM", logoUrl: MonsieurImmoLogo, addedAt: "2026-01-27" },
+  { name: "Tutos Immo de l'Echo", url: "https://open.spotify.com/show/2gno4XSFySbOcrWmbBsP7T", logoUrl: TutosImmoLogo, addedAt: "2026-01-27" },
+  { name: "Unique (Piron Construction)", url: "https://open.spotify.com/show/62kWVwJUsuYdP2edDZiPiv", logoUrl: UniquePironLogo, addedAt: "2026-01-27" },
 ];
 
 import PIMbeLogo from "@/assets/PIM_be.jpg";
 
 const communautesSites = [
-  { name: "Le Rdv Des Proprios", url: "https://chat.whatsapp.com/JIyOOfIkwNiFMl2ukIt5ai", subtitle: "(WhatsApp)", logoUrl: LeRdvDesPropriosLogo },
-  { name: "Immo Passion", url: "https://chat.whatsapp.com/BYwpls3CXIbKPlWUSwAPkc", subtitle: "(WhatsApp)", logoUrl: ImmoPassionWhatsAppLogo },
-  { name: "PIM.be", url: "https://www.forum.pim.be", subtitle: "(Forum web)", logoUrl: PIMbeLogo },
-  { name: "BricoZone.be", url: "https://www.bricozone.be", subtitle: "(Forum web)", logoUrl: BricoZoneLogo },
+  { name: "Le Rdv Des Proprios", url: "https://chat.whatsapp.com/JIyOOfIkwNiFMl2ukIt5ai", subtitle: "(WhatsApp)", logoUrl: LeRdvDesPropriosLogo, addedAt: "2026-01-27" },
+  { name: "Immo Passion", url: "https://chat.whatsapp.com/BYwpls3CXIbKPlWUSwAPkc", subtitle: "(WhatsApp)", logoUrl: ImmoPassionWhatsAppLogo, addedAt: "2026-01-27" },
+  { name: "PIM.be", url: "https://www.forum.pim.be", subtitle: "(Forum web)", logoUrl: PIMbeLogo, addedAt: "2026-01-27" },
+  { name: "BricoZone.be", url: "https://www.bricozone.be", subtitle: "(Forum web)", logoUrl: BricoZoneLogo, addedAt: "2026-01-27" },
 ];
 
 const creationSites = [
