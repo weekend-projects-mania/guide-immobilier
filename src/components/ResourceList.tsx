@@ -4,6 +4,7 @@ interface Resource {
   name: string;
   url: string;
   description: string;
+  addedAt?: string; // ISO date string for when the resource was added
 }
 
 interface ResourceListProps {
@@ -12,6 +13,13 @@ interface ResourceListProps {
   resources: Resource[];
 }
 
+const isRecent = (addedAt?: string): boolean => {
+  if (!addedAt) return false;
+  const addedDate = new Date(addedAt);
+  const now = new Date();
+  const diffInHours = (now.getTime() - addedDate.getTime()) / (1000 * 60 * 60);
+  return diffInHours <= 48;
+};
 
 const ResourceList = ({ id, title, resources }: ResourceListProps) => {
   return (
@@ -21,6 +29,7 @@ const ResourceList = ({ id, title, resources }: ResourceListProps) => {
         <div className="border border-border rounded-lg divide-y divide-border bg-card">
           {resources.map((resource, index) => {
             const isBlack = index % 2 === 0;
+            const showNewBadge = isRecent(resource.addedAt);
             return (
               <a
                 key={`${resource.name}-${index}`}
@@ -30,8 +39,11 @@ const ResourceList = ({ id, title, resources }: ResourceListProps) => {
                 className="flex items-center justify-between p-4 hover:bg-accent/50 transition-colors group"
               >
                 <div className="min-w-0 flex-1">
-                  <div className="font-medium text-black dark:text-white group-hover:text-primary transition-colors">
+                  <div className="font-medium text-black dark:text-white group-hover:text-primary transition-colors flex items-center gap-2">
                     {resource.description}
+                    {showNewBadge && (
+                      <span className="inline-block w-2 h-2 rounded-full bg-green-500 flex-shrink-0" title="Nouveau" />
+                    )}
                   </div>
                   <div className="text-sm text-muted-foreground truncate">
                     {resource.name}
