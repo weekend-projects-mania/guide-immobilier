@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import SearchBar from "@/components/SearchBar";
 import ResourceList from "@/components/ResourceList";
 import SiteGrid from "@/components/SiteGrid";
 import Footer from "@/components/Footer";
@@ -37,6 +38,8 @@ const rechercherResources = [
   { name: "Google Earth", url: "https://www.google.com/maps", description: "Visualiser une adresse et son quartier (vue aérienne)" },
   { name: "Notaire.be", url: "https://www.notaire.be/notaire/recherchez", description: "Trouver un notaire près de chez soi" },
   { name: "Statbel", url: "https://statbel.fgov.be/fr/themes/construction-logement/prix-de-limmobilier", description: "Statistiques sur le prix de l'immobilier par communes / provinces / régions" },
+  { name: "Wallex - Service Public Wallon", url: "https://wallex.wallonie.be/home.html", description: "Base de données juridique de la Région Wallonne", addedAt: "2026-01-28" },
+  { name: "Vlaamse Codex", url: "https://codex.vlaanderen.be/", description: "Base de données juridique de la Région Flamande", addedAt: "2026-01-28" },
 ];
 
 const ressourcesResources = [
@@ -83,6 +86,7 @@ import TutosImmoLogo from "@/assets/Tutos_Immo.jpg";
 import UniquePironLogo from "@/assets/Unique_Piron_Construction.jpg";
 import ImmoPassionWhatsAppLogo from "@/assets/Immo_Passion_WhatsApp.jpg";
 import BricoZoneLogo from "@/assets/Brico_Zone.jpg";
+import AperosImmoLogo from "@/assets/Aperos_Immo.jpg";
 
 const podcastsSites = [
   { name: "Le Rdv Des Proprios", url: "https://open.spotify.com/show/4hq7fUqMCejfKrSn28Ickb", logoUrl: LeRdvDesPropriosLogo },
@@ -103,6 +107,7 @@ import PIMbeLogo from "@/assets/PIM_be.jpg";
 
 const communautesSites = [
   { name: "Le Rdv Des Proprios", url: "https://chat.whatsapp.com/JIyOOfIkwNiFMl2ukIt5ai", subtitle: "(WhatsApp)", logoUrl: LeRdvDesPropriosLogo, addedAt: "2026-01-27" },
+  { name: "Les Apéros Immo", url: "https://chat.whatsapp.com/EyenGIkAV0yHVuE5iPWCWF", subtitle: "(WhatsApp)", logoUrl: AperosImmoLogo, addedAt: "2026-01-28" },
   { name: "Immo Passion", url: "https://chat.whatsapp.com/BYwpls3CXIbKPlWUSwAPkc", subtitle: "(WhatsApp)", logoUrl: ImmoPassionWhatsAppLogo, addedAt: "2026-01-27" },
   { name: "PIM.be", url: "https://forum.pim.be/", subtitle: "(Forum web)", logoUrl: PIMbeLogo, addedAt: "2026-01-27" },
   { name: "BricoZone.be", url: "https://www.bricozone.be", subtitle: "(Forum web)", logoUrl: BricoZoneLogo, addedAt: "2026-01-27" },
@@ -128,6 +133,7 @@ const Index = () => {
       <Header />
       <Hero />
       <main>
+        <SearchBar />
         <ResourceList id="calculer" title="Calculer" resources={calculerResources} />
         <ResourceList id="verifier" title="Vérifier" resources={verifierResources} />
         <ResourceList id="rechercher" title="Rechercher" resources={rechercherResources} />

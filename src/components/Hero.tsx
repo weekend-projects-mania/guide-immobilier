@@ -2,7 +2,7 @@ import { Heart } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-8 md:py-12">
       <div className="container px-4">
         <h1 className="text-3xl md:text-4xl font-semibold text-foreground mb-3">
           Ton site immo fav
