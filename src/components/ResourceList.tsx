@@ -17,8 +17,8 @@ const isRecent = (addedAt?: string): boolean => {
   if (!addedAt) return false;
   const addedDate = new Date(addedAt);
   const now = new Date();
-  const diffInHours = (now.getTime() - addedDate.getTime()) / (1000 * 60 * 60);
-  return diffInHours <= 48;
+  const diffInDays = (now.getTime() - addedDate.getTime()) / (1000 * 60 * 60 * 24);
+  return diffInDays <= 5;
 };
 
 const ResourceList = ({ id, title, resources }: ResourceListProps) => {
