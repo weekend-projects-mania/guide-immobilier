@@ -12,6 +12,7 @@ const calculerResources = [
   { name: "Notaire.be", url: "https://www.notaire.be/calculateurs/immobilier/calcul-de-frais-dacte-dachat-lors-dune-vente-publique-en-ligne-biddit", description: "Estimer les frais d'acte d'achat pour une vente Biddit (enchère)" },
   { name: "Guide-épargne.be", url: "https://www.guide-epargne.be/epargner/comparez/frais-refinancement.html", description: "Estimer les frais de refinancement de votre crédit" },
   { name: "Notaire.be", url: "https://www.notaire.be/calculateurs/immobilier/calcul-de-frais-dacte-de-mainlevee-hypothecaire", description: "Estimer les frais d'acte de mainlevée hypothécaire" },
+  { name: "Statbel", url: "https://statbel.fgov.be/fr/themes/prix-la-consommation/calculateur-de-loyer", description: "Calculateur de loyer indexé (tous types de baux)", addedAt: "2026-02-02" },
   { name: "Bruxelles Logement", url: "https://loyers.brussels/#step-1", description: "Calculer le loyer de référence à Bruxelles" },
   { name: "Wallonie Logement", url: "https://loyerswallonie.be/", description: "Grille des loyers en Wallonie" },
   { name: "Immoweb", url: "https://www.immoweb.be/fr/estimation-immobiliere/simulateur-prix/address", description: "Estimer la valeur d'un bien immobilier" },
@@ -60,15 +61,17 @@ const ressourcesResources = [
   { name: "Bruxelles Environnement", url: "https://app.bruxellesenvironnement.be/listes/?nr_list=peb_010", description: "Liste des certificateurs PEB à Bruxelles", addedAt: "2026-01-27" },
 ];
 
+import IminoLogo from "@/assets/Imino.png";
+
 const trouverMonBienSites = [
   { name: "Immoweb", url: "https://www.immoweb.be/fr" },
+  { name: "Imino", url: "https://imino.be/fr/", subtitle: "(coup de coeur)", logoUrl: IminoLogo, addedAt: "2026-02-02" },
   { name: "Zimmo", url: "https://www.zimmo.be/fr/" },
   { name: "Immovlan", url: "https://www.immovlan.be/fr", logoUrl: "https://www.immovlan.be/favicon.ico" },
   { name: "Notaire.be", url: "https://immo.notaire.be/fr/" },
   { name: "Realo", url: "https://www.realo.be/fr" },
   { name: "Biddit", url: "https://www.biddit.be/fr/landing", subtitle: "(enchères)" },
   { name: "Finimmoweb", url: "https://www.finimmoweb.be/fr", subtitle: "(enchères)" },
-  { name: "Immoscoop", url: "https://www.immoscoop.be/fr" },
 ];
 
 import LeRdvDesPropriosLogo from "@/assets/Le_Rdv_Des_Proprios.jpg";
