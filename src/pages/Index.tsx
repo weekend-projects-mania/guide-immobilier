@@ -23,6 +23,7 @@ const verifierResources = [
   { name: "Banque Nationale de Belgique (BNB)", url: "https://www.nbb.be/fr/centrales-des-credits/centrale-des-credits-aux-particuliers-ccp/consulter/informations-pour-les", description: "Consulter les crédits liés à mon nom" },
   { name: "Izimi - par Fednot", url: "https://app.izimi.be/?lng=fr", description: "Retrouver les actes notariés liés à mon nom" },
   { name: "Banque Nationale de Belgique (BNB)", url: "https://www.nbb.be/fr/centrale-des-bilans/consulter/consult", description: "Consulter les comptes annuels d'une entreprise" },
+  { name: "Moniteur belge", url: "https://www.ejustice.just.fgov.be/cgi_tsv/rech.pl?language=fr", description: "Consulter les actes officiels d'une société (création, modification des statuts, nominations, démissions, dissolutions, etc.)", addedAt: "2026-03-29" },
   { name: "Banque-Carrefour des Entreprises (BCE)", url: "https://kbopub.economie.fgov.be/kbopub/zoeknummerform.html", description: "Vérifier si une entreprise est toujours active (et ses activités)" },
   { name: "ONSS", url: "https://www.checkobligationderetenue.be/", description: "Vérifier si une entreprise a des dettes sociales ou fiscales" },
   { name: "SPW Energie", url: "https://www.registrepeb.be/#/", description: "Registre des certificats PEB - Wallonie" },
