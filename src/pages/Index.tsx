@@ -37,7 +37,7 @@ const rechercherResources = [
   { name: "GeoPunt", url: "https://www.geopunt.be/", description: "Voir le plan parcellaire cadastral Flamand" },
   { name: "BruGIS", url: "https://gis.urban.brussels/brugis/#/", description: "Outil de gestion de l'aménagement du territoire de Bruxelles" },
   { name: "Google Maps", url: "https://www.google.com/maps", description: "Visualiser une adresse et son quartier (cartographie et StreetVue)" },
-  { name: "Google Earth", url: "https://www.google.com/maps", description: "Visualiser une adresse et son quartier (vue aérienne)" },
+  { name: "Google Earth", url: "https://earth.google.com/web/", description: "Visualiser une adresse et son quartier (vue aérienne)" },
   { name: "Notaire.be", url: "https://www.notaire.be/notaire/recherchez", description: "Trouver un notaire près de chez soi" },
   { name: "Statbel", url: "https://statbel.fgov.be/fr/themes/construction-logement/prix-de-limmobilier", description: "Statistiques sur le prix de l'immobilier par communes / provinces / régions" },
   { name: "Wallex - Service Public Wallon", url: "https://wallex.wallonie.be/home.html", description: "Base de données juridique de la Région Wallonne", addedAt: "2026-01-28" },
@@ -121,7 +121,7 @@ const creationSites = [
   { name: "Home By Me", url: "https://home.by.me/fr/", subtitle: "(Plans 3D)" },
   { name: "Sweet Home 3D", url: "https://www.sweethome3d.com/fr/", subtitle: "(Plans 3D)", logoUrl: SweetHome3DLogo },
   { name: "Houzz", url: "https://www.houzz.fr/", subtitle: "(Inspiration déco)" },
-  { name: "IKEA", url: "https://www.ikea.com/be/fr/planners/#72bfd7d0-1a4d-11e9-8dfd-b5e1e20c2465", subtitle: "(Outils de planification)" },
+  { name: "IKEA", url: "https://www.ikea.com/be/fr/planners/", subtitle: "(Outils de planification)" },
 ];
 
 const aVenirItems = [
