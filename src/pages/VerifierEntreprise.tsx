@@ -1,6 +1,4 @@
 import { useState } from "react";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -50,6 +48,7 @@ const VerifierEntreprise = () => {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<CheckResult | null>(null);
   const [apiError, setApiError] = useState<string | null>(null);
+  const [copied, setCopied] = useState(false);
 
   const numero = normalizeNumber(input);
 
@@ -58,6 +57,7 @@ const VerifierEntreprise = () => {
     setError(null);
     setApiError(null);
     setResult(null);
+    setCopied(false);
 
     const validation = isValidBelgianNumber(numero);
     if (!validation.valid) {
@@ -83,141 +83,232 @@ const VerifierEntreprise = () => {
     }
   };
 
-  const sources = [
-    {
-      name: "Banque-Carrefour des Entreprises (BCE)",
-      url: `https://kbopub.economie.fgov.be/kbopub/zoeknummerform.html?lang=fr&nummer=${numero}`,
-      description: "Vérifier si une entreprise est toujours active (et ses activités)",
-    },
-    {
-      name: "Moniteur belge",
-      url: "https://www.ejustice.just.fgov.be/cgi_tsv/rech.pl?language=fr",
-      description: "Consulter les actes officiels d'une société (création, démissions, dissolutions, etc.)",
-    },
-    {
-      name: "Banque Nationale de Belgique (BNB) - comptes annuels",
-      url: `https://consult.cbso.nbb.be/consult-enterprise/${numero}`,
-      description: "Consulter les comptes annuels d'une entreprise",
-    },
-    {
-      name: "ONSS - Obligation de retenue",
-      url: "https://www.checkobligationderetenue.be/",
-      description: "Vérifier si une entreprise a des dettes sociales ou fiscales",
-    },
-  ];
+  const handleCopyNumber = async () => {
+    try {
+      await navigator.clipboard.writeText(numero);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      setCopied(false);
+    }
+  };
+
+  const formatDisplayNumber = (n: string) => {
+    if (n.length === 10) {
+      return `${n.slice(0, 4)}.${n.slice(4, 7)}.${n.slice(7)}`;
+    }
+    return n;
+  };
+
+  const resultTitle = result?.name || "Numéro d'entreprise";
+  const resultNumber = result?.cbe_number_formatted || formatDisplayNumber(numero);
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      <main className="flex-1">
-        <section className="py-8 md:py-12">
-          <div className="container px-4 max-w-2xl">
-            <h1 className="text-3xl md:text-4xl font-semibold text-foreground mb-3">
-              Vérifier une entreprise
-            </h1>
-            <p className="bg-black text-white px-3 py-2 inline-block max-w-xl mb-8">
-              Saisis un numéro d'entreprise ou de TVA belge pour en obtenir les informations officielles.
-            </p>
-
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 mb-6">
-              <Input
-                type="text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                placeholder="BE 0123.456.789"
-                className="flex-1"
-              />
-              <Button
-                type="submit"
-                disabled={loading}
-                className="bg-black text-white hover:bg-black/90 transition-transform hover:scale-105"
-              >
-                {loading ? "Vérification..." : "Vérifier"}
-              </Button>
-            </form>
-
-            {error && (
-              <div className="mb-6 p-4 border border-destructive/30 bg-destructive/10 text-destructive rounded-lg">
-                {error}
-              </div>
-            )}
-
-            {apiError && (
-              <div className="mb-6 p-4 border border-destructive/30 bg-destructive/10 text-destructive rounded-lg">
-                {apiError}
-              </div>
-            )}
-
-            {result && (
-              <div className="border border-border rounded-lg divide-y divide-border bg-card mb-12">
-                <div className="p-4">
-                  <div className="text-sm text-muted-foreground mb-1">Nom</div>
-                  <div className="font-medium text-foreground">{result.name}</div>
-                </div>
-                <div className="p-4">
-                  <div className="text-sm text-muted-foreground mb-1">Numéro formaté</div>
-                  <div className="font-medium text-foreground">{result.cbe_number_formatted}</div>
-                </div>
-                <div className="p-4">
-                  <div className="text-sm text-muted-foreground mb-1">Statut</div>
-                  <div className="font-medium text-foreground">{result.status}</div>
-                </div>
-                <div className="p-4">
-                  <div className="text-sm text-muted-foreground mb-1">Forme juridique</div>
-                  <div className="font-medium text-foreground">{result.legal_form}</div>
-                </div>
-                <div className="p-4">
-                  <div className="text-sm text-muted-foreground mb-1">Type d'entité</div>
-                  <div className="font-medium text-foreground">{result.entity_type}</div>
-                </div>
-              </div>
-            )}
-
-            {result && (
-              <section className="mb-12">
-                <h2 className="text-lg font-bold uppercase text-black dark:text-white mb-4">
-                  Sources officielles
-                </h2>
-                <div className="border border-border rounded-lg divide-y divide-border bg-card">
-                  {sources.map((source, index) => {
-                    const isBlack = index % 2 === 0;
-                    return (
-                      <a
-                        key={source.name}
-                        href={source.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-between p-4 hover:bg-accent/50 transition-colors group"
-                      >
-                        <div className="min-w-0 flex-1">
-                          <div className="font-medium text-black dark:text-white group-hover:text-primary transition-colors">
-                            {source.description}
-                          </div>
-                          <div className="text-sm text-muted-foreground truncate">
-                            {source.name}
-                          </div>
-                        </div>
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className={`ml-4 flex-shrink-0 border transition-transform hover:scale-105 ${
-                            isBlack
-                              ? "bg-black text-white border-black hover:bg-black hover:text-white"
-                              : "bg-white text-black border-black hover:bg-white hover:text-black"
-                          }`}
-                        >
-                          Ouvrir
-                        </Button>
-                      </a>
-                    );
-                  })}
-                </div>
-              </section>
-            )}
+    <div className="min-h-screen py-12 px-4" style={{ backgroundColor: "#F4F6F9", fontFamily: "Inter, sans-serif" }}>
+      <div className="max-w-2xl mx-auto">
+        {/* Header text */}
+        <div className="text-center mb-10">
+          <div
+            className="text-xs font-bold uppercase tracking-[0.15em] mb-3"
+            style={{ color: "#1d4ed8" }}
+          >
+            Entreprise Check
           </div>
-        </section>
-      </main>
-      <Footer />
+          <h1 className="text-3xl md:text-4xl font-bold text-[#111827] mb-3">
+            Retrouvez une entreprise belge
+          </h1>
+          <p className="text-base text-gray-500 max-w-lg mx-auto">
+            Un accès rapide aux principales sources d'information sur une entreprise.
+          </p>
+        </div>
+
+        {/* Main card */}
+        <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8">
+          <label className="block text-sm font-semibold text-gray-900 mb-2">
+            Numéro d'entreprise ou numéro de TVA
+          </label>
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 mb-3">
+            <Input
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="BE 0123.456.789"
+              className="flex-1 h-11 border-gray-300 focus-visible:ring-[#1d4ed8]"
+            />
+            <Button
+              type="submit"
+              disabled={loading}
+              className="h-11 px-6 font-semibold text-white hover:opacity-90 transition-opacity"
+              style={{ backgroundColor: "#1d4ed8" }}
+            >
+              {loading ? "Recherche..." : "Rechercher"}
+            </Button>
+          </form>
+          <p className="text-sm text-gray-500 mb-4">
+            Le préfixe BE, les espaces et les points sont automatiquement supprimés.
+          </p>
+
+          {error && (
+            <div className="mb-4 p-3 rounded-lg text-sm" style={{ backgroundColor: "#FEE2E2", color: "#B91C1C" }}>
+              {error}
+            </div>
+          )}
+
+          {apiError && (
+            <div className="mb-4 p-3 rounded-lg text-sm" style={{ backgroundColor: "#FEE2E2", color: "#B91C1C" }}>
+              {apiError}
+            </div>
+          )}
+
+          {/* Result block */}
+          {(result || loading) && (
+            <div className="mt-8 pt-6 border-t border-gray-100">
+              <div className="flex items-start justify-between mb-4">
+                <div>
+                  <div className="text-sm text-gray-500 mb-1">{loading ? "Numéro d'entreprise" : "Entreprise"}</div>
+                  <div className="text-lg font-bold text-gray-900">{resultTitle}</div>
+                </div>
+                <div className="flex items-center gap-2 px-3 py-1 rounded-full text-sm font-semibold" style={{ backgroundColor: "#DCFCE7", color: "#15803D" }}>
+                  <span className="w-2 h-2 rounded-full" style={{ backgroundColor: "#15803D" }} />
+                  Recherche prête
+                </div>
+              </div>
+              <div className="text-sm text-gray-500 mb-4">
+                Numéro : <span className="font-semibold text-gray-900">{resultNumber}</span>
+              </div>
+              {result && (
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center py-2 border-b border-gray-50">
+                    <span className="text-sm text-gray-500">Statut</span>
+                    <span className="font-semibold text-gray-900">{result.status}</span>
+                  </div>
+                  <div className="flex justify-between items-center py-2 border-b border-gray-50">
+                    <span className="text-sm text-gray-500">Forme juridique</span>
+                    <span className="font-semibold text-gray-900">{result.legal_form}</span>
+                  </div>
+                  <div className="flex justify-between items-center py-2">
+                    <span className="text-sm text-gray-500">Type d'entité</span>
+                    <span className="font-semibold text-gray-900">{result.entity_type}</span>
+                  </div>
+                </div>
+              )}
+              {loading && (
+                <div className="text-sm text-gray-500">Chargement des informations...</div>
+              )}
+            </div>
+          )}
+        </div>
+
+        {/* Sources officielles */}
+        {(result || loading) && (
+          <section className="mb-8">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-4">
+              Sources officielles
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* BCE */}
+              <div className="bg-white rounded-xl border border-gray-200 p-5 flex flex-col">
+                <div className="text-2xl mb-3">🏢</div>
+                <div className="font-bold text-gray-900 mb-1">BCE</div>
+                <div className="text-sm text-gray-500 mb-4">Banque-Carrefour des Entreprises</div>
+                <a
+                  href={`https://kbopub.economie.fgov.be/kbopub/zoeknummerform.html?lang=fr&nummer=${numero}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-auto inline-flex items-center text-sm font-semibold hover:underline"
+                  style={{ color: "#1d4ed8" }}
+                >
+                  Ouvrir →
+                </a>
+              </div>
+
+              {/* Moniteur belge */}
+              <div className="bg-white rounded-xl border border-gray-200 p-5 flex flex-col">
+                <div className="text-2xl mb-3">📰</div>
+                <div className="font-bold text-gray-900 mb-1">Moniteur belge</div>
+                <div className="text-sm text-gray-500 mb-4">Publications officielles</div>
+                <a
+                  href="https://www.ejustice.just.fgov.be/cgi_tsv/rech.pl?language=fr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-auto inline-flex items-center text-sm font-semibold hover:underline"
+                  style={{ color: "#1d4ed8" }}
+                >
+                  Rechercher →
+                </a>
+              </div>
+
+              {/* BNB */}
+              <div className="bg-white rounded-xl border border-gray-200 p-5 flex flex-col">
+                <div className="text-2xl mb-3">📊</div>
+                <div className="font-bold text-gray-900 mb-1">BNB</div>
+                <div className="text-sm text-gray-500 mb-4">Centrale des bilans</div>
+                <a
+                  href={`https://consult.cbso.nbb.be/consult-enterprise/${numero}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-auto inline-flex items-center text-sm font-semibold hover:underline"
+                  style={{ color: "#1d4ed8" }}
+                >
+                  Rechercher →
+                </a>
+              </div>
+
+              {/* Obligation de retenue */}
+              <div className="bg-white rounded-xl border border-gray-200 p-5 flex flex-col">
+                <div className="text-2xl mb-3">🧾</div>
+                <div className="font-bold text-gray-900 mb-1">Obligation de retenue</div>
+                <div className="text-sm text-gray-500 mb-4">Vérification des dettes sociales</div>
+                <div className="mt-auto flex flex-wrap gap-2">
+                  <button
+                    onClick={handleCopyNumber}
+                    className="inline-flex items-center px-3 py-1.5 rounded-md text-sm font-semibold border hover:bg-gray-50 transition-colors"
+                    style={{ color: "#1d4ed8", borderColor: "#1d4ed8" }}
+                  >
+                    {copied ? "Copié !" : "Copier n°"}
+                  </button>
+                  <a
+                    href="https://www.checkobligationderetenue.be/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-3 py-1.5 rounded-md text-sm font-semibold text-white hover:opacity-90 transition-opacity"
+                    style={{ backgroundColor: "#1d4ed8" }}
+                  >
+                    Vérifier →
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Autres sources */}
+        {(result || loading) && (
+          <section>
+            <h2 className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-4">
+              Autres sources
+            </h2>
+            <div className="bg-white rounded-xl border border-gray-200 p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div className="flex items-start gap-4">
+                <span className="text-2xl">📁</span>
+                <div>
+                  <div className="font-bold text-gray-900 mb-1">Pappers.be</div>
+                  <div className="text-sm text-gray-500">Informations juridiques et financières complémentaires</div>
+                </div>
+              </div>
+              <a
+                href={`https://www.pappers.be/fr/search?q=${numero}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-4 py-2 rounded-md text-sm font-semibold text-white hover:opacity-90 transition-opacity sm:flex-shrink-0"
+                style={{ backgroundColor: "#1d4ed8" }}
+              >
+                Consulter →
+              </a>
+            </div>
+          </section>
+        )}
+      </div>
     </div>
   );
 };
