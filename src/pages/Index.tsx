@@ -19,6 +19,7 @@ const calculerResources = [
 ];
 
 const verifierResources = [
+  { name: "Interne — données BCE, BNB, ONSS, SPF Finances", url: "/verifier-entreprise", description: "Vérifier une entreprise en un clic (statut, forme juridique, dettes, actes - sources officielles)", addedAt: "2026-08-14" },
   { name: "Banque Nationale de Belgique (BNB)", url: "https://www.nbb.be/fr/centrales-des-credits/centrale-des-credits-aux-particuliers-ccp/consulter/informations-pour-les", description: "Consulter les crédits liés à mon nom" },
   { name: "Izimi - par Fednot", url: "https://app.izimi.be/?lng=fr", description: "Retrouver les actes notariés liés à mon nom" },
   { name: "Banque Nationale de Belgique (BNB)", url: "https://www.nbb.be/fr/centrale-des-bilans/consulter/consult", description: "Consulter les comptes annuels d'une entreprise" },
