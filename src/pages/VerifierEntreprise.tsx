@@ -297,76 +297,84 @@ const VerifierEntreprise = () => {
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {/* BCE */}
-              <div className="bg-white rounded-xl border border-gray-200 p-5 flex flex-col">
-                <div className="text-2xl mb-3">🏢</div>
-                <div className="font-bold text-gray-900 mb-1">BCE</div>
-                <div className="text-sm text-gray-500 mb-4">Banque-Carrefour des Entreprises</div>
-                <a
-                  href={`https://kbopub.economie.fgov.be/kbopub/zoeknummerform.html?lang=fr&nummer=${numero}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-auto inline-flex items-center text-sm font-semibold hover:underline"
-                  style={{ color: "#1d4ed8" }}
-                >
-                  Ouvrir →
-                </a>
-              </div>
-
-              {/* Moniteur belge */}
-              <div className="bg-white rounded-xl border border-gray-200 p-5 flex flex-col">
-                <div className="text-2xl mb-3">📰</div>
-                <div className="font-bold text-gray-900 mb-1">Moniteur belge</div>
-                <div className="text-sm text-gray-500 mb-4">Publications officielles</div>
-                <a
-                  href="https://www.ejustice.just.fgov.be/cgi_tsv/rech.pl?language=fr"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-auto inline-flex items-center text-sm font-semibold hover:underline"
-                  style={{ color: "#1d4ed8" }}
-                >
-                  Rechercher →
-                </a>
-              </div>
-
-              {/* BNB */}
-              <div className="bg-white rounded-xl border border-gray-200 p-5 flex flex-col">
-                <div className="text-2xl mb-3">📊</div>
-                <div className="font-bold text-gray-900 mb-1">BNB</div>
-                <div className="text-sm text-gray-500 mb-4">Centrale des bilans</div>
-                <a
-                  href={`https://consult.cbso.nbb.be/consult-enterprise/${numero}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-auto inline-flex items-center text-sm font-semibold hover:underline"
-                  style={{ color: "#1d4ed8" }}
-                >
-                  Rechercher →
-                </a>
-              </div>
-
-              {/* Obligation de retenue */}
-              <div className="bg-white rounded-xl border border-gray-200 p-5 flex flex-col">
-                <div className="text-2xl mb-3">🧾</div>
-                <div className="font-bold text-gray-900 mb-1">Obligation de retenue</div>
-                <div className="text-sm text-gray-500 mb-4">Vérification des dettes sociales</div>
-                <div className="mt-auto flex flex-wrap gap-2">
-                  <button
-                    onClick={handleCopyNumber}
-                    className="inline-flex items-center px-3 py-1.5 rounded-md text-sm font-semibold border hover:bg-gray-50 transition-colors"
-                    style={{ color: "#1d4ed8", borderColor: "#1d4ed8" }}
-                  >
-                    {copied ? "Copié !" : "Copier n°"}
-                  </button>
+              <div className="bg-white rounded-xl border border-gray-200 p-5">
+                <div className="flex items-start justify-between gap-3 mb-3">
+                  <div className="text-2xl">🏢</div>
                   <a
-                    href="https://www.checkobligationderetenue.be/"
+                    href={`https://kbopub.economie.fgov.be/kbopub/zoeknummerform.html?lang=fr&nummer=${numero}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center px-3 py-1.5 rounded-md text-sm font-semibold text-white hover:opacity-90 transition-opacity"
                     style={{ backgroundColor: "#1d4ed8" }}
                   >
-                    Vérifier →
+                    Ouvrir →
                   </a>
                 </div>
+                <div className="font-bold text-gray-900 mb-1">BCE</div>
+                <div className="text-sm text-gray-500">Banque-Carrefour des Entreprises</div>
+              </div>
+
+              {/* Moniteur belge */}
+              <div className="bg-white rounded-xl border border-gray-200 p-5">
+                <div className="flex items-start justify-between gap-3 mb-3">
+                  <div className="text-2xl">📰</div>
+                  <a
+                    href="https://www.ejustice.just.fgov.be/cgi_tsv/rech.pl?language=fr"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-3 py-1.5 rounded-md text-sm font-semibold text-white hover:opacity-90 transition-opacity"
+                    style={{ backgroundColor: "#1d4ed8" }}
+                  >
+                    Rechercher →
+                  </a>
+                </div>
+                <div className="font-bold text-gray-900 mb-1">Moniteur belge</div>
+                <div className="text-sm text-gray-500">Publications officielles</div>
+              </div>
+
+              {/* BNB */}
+              <div className="bg-white rounded-xl border border-gray-200 p-5">
+                <div className="flex items-start justify-between gap-3 mb-3">
+                  <div className="text-2xl">📊</div>
+                  <a
+                    href={`https://consult.cbso.nbb.be/consult-enterprise/${numero}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-3 py-1.5 rounded-md text-sm font-semibold text-white hover:opacity-90 transition-opacity"
+                    style={{ backgroundColor: "#1d4ed8" }}
+                  >
+                    Rechercher →
+                  </a>
+                </div>
+                <div className="font-bold text-gray-900 mb-1">BNB</div>
+                <div className="text-sm text-gray-500">Centrale des bilans</div>
+              </div>
+
+              {/* Obligation de retenue */}
+              <div className="bg-white rounded-xl border border-gray-200 p-5">
+                <div className="flex items-start justify-between gap-3 mb-3">
+                  <div className="text-2xl">🧾</div>
+                  <div className="flex flex-wrap gap-2">
+                    <button
+                      onClick={handleCopyNumber}
+                      className="inline-flex items-center px-3 py-1.5 rounded-md text-sm font-semibold border hover:bg-gray-50 transition-colors"
+                      style={{ color: "#1d4ed8", borderColor: "#1d4ed8" }}
+                    >
+                      {copied ? "Copié !" : "Copier n°"}
+                    </button>
+                    <a
+                      href="https://www.checkobligationderetenue.be/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center px-3 py-1.5 rounded-md text-sm font-semibold text-white hover:opacity-90 transition-opacity"
+                      style={{ backgroundColor: "#1d4ed8" }}
+                    >
+                      Vérifier →
+                    </a>
+                  </div>
+                </div>
+                <div className="font-bold text-gray-900 mb-1">Obligation de retenue</div>
+                <div className="text-sm text-gray-500">Vérification des dettes sociales</div>
               </div>
             </div>
           </section>
@@ -408,7 +416,8 @@ const VerifierEntreprise = () => {
             <button
               type="button"
               onClick={handleNewSearch}
-              className="w-full bg-blue-50 text-blue-700 font-semibold rounded-xl py-4 text-center hover:bg-blue-100 transition-colors"
+              className="w-full h-11 px-6 font-semibold text-white rounded-md hover:opacity-90 transition-opacity"
+              style={{ backgroundColor: "#1d4ed8" }}
             >
               ← Nouvelle recherche
             </button>
