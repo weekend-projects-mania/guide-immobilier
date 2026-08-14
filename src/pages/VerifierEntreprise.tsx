@@ -133,7 +133,7 @@ const VerifierEntreprise = () => {
             Passez l'entreprise au crible
           </h1>
           <p className="text-base text-gray-500 max-w-lg mx-auto">
-            Un accès rapide aux principales sources d'information sur une entreprise.
+            Statut, forme juridique, dettes et sources officielles — en une recherche, gratuit, sans compte.
           </p>
         </div>
 
