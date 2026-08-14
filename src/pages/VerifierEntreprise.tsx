@@ -51,13 +51,14 @@ const VerifierEntreprise = () => {
   const [result, setResult] = useState<CheckResult | null>(null);
   const [apiError, setApiError] = useState<string | null>(null);
 
+  const numero = normalizeNumber(input);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
     setApiError(null);
     setResult(null);
 
-    const numero = normalizeNumber(input);
     const validation = isValidBelgianNumber(numero);
     if (!validation.valid) {
       setError(validation.error || "Numéro invalide.");
@@ -70,7 +71,7 @@ const VerifierEntreprise = () => {
         `https://guideimmo.xc1.app/webhook/entreprise-check?numero=${encodeURIComponent(numero)}`
       );
       const data: ApiResponse = await response.json();
-      if (!data.success) {
+      if (data.success === false) {
         setApiError(data.error || "Une erreur est survenue lors de la vérification.");
       } else {
         setResult(data);
@@ -105,8 +106,6 @@ const VerifierEntreprise = () => {
     },
   ];
 
-  const numero = normalizeNumber(input);
-
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -138,13 +137,13 @@ const VerifierEntreprise = () => {
             </form>
 
             {error && (
-              <div className="mb-6 p-4 border border-red-300 bg-red-50 text-red-700 rounded-lg">
+              <div className="mb-6 p-4 border border-destructive/30 bg-destructive/10 text-destructive rounded-lg">
                 {error}
               </div>
             )}
 
             {apiError && (
-              <div className="mb-6 p-4 border border-red-300 bg-red-50 text-red-700 rounded-lg">
+              <div className="mb-6 p-4 border border-destructive/30 bg-destructive/10 text-destructive rounded-lg">
                 {apiError}
               </div>
             )}
