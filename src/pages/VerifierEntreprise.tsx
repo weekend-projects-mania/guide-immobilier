@@ -398,6 +398,23 @@ const VerifierEntreprise = () => {
             </div>
           </section>
         )}
+
+        {/* Nouvelle recherche */}
+        {(result || loading) && (
+          <section className="mt-8">
+            <div className="bg-gray-50 rounded-xl p-4 text-center text-gray-500 text-sm mb-3">
+              Les liens ouvrent les sites tiers. L'outil ne collecte ni ne modifie les données de ces sites.
+            </div>
+            <button
+              type="button"
+              onClick={handleNewSearch}
+              className="w-full bg-blue-50 text-blue-700 font-semibold rounded-xl py-4 text-center hover:bg-blue-100 transition-colors"
+            >
+              ← Nouvelle recherche
+            </button>
+          </section>
+        )}
+
       </div>
     </div>
   );
