@@ -184,18 +184,19 @@ const VerifierEntreprise = () => {
               </div>
               {result && (
                 <>
-                  <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
-                    <span>Statut :</span>
+                  <div className="text-sm text-gray-500 mb-4">
+                    Statut :{" "}
                     {(() => {
                       const style = getStatusStyle(result.status);
                       return (
-                        <span className="flex items-center gap-2 px-3 py-1 rounded-full text-sm font-semibold" style={{ backgroundColor: style.bg, color: style.text }}>
+                        <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-semibold" style={{ backgroundColor: style.bg, color: style.text }}>
                           <span className="w-2 h-2 rounded-full" style={{ backgroundColor: style.dot }} />
                           {result.status}
                         </span>
                       );
                     })()}
                   </div>
+
                   <div className="text-sm text-gray-500 mb-4">
                     Forme juridique : <span className="font-semibold text-gray-900">{result.legal_form}</span>
                   </div>
