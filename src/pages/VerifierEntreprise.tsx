@@ -126,7 +126,7 @@ const VerifierEntreprise = () => {
             className="text-xs font-bold uppercase tracking-[0.15em] mb-3"
             style={{ color: "#1d4ed8" }}
           >
-            Entreprise Check
+            Entreprise Check — Un outil Guide Immo
           </div>
           <h1 className="text-3xl md:text-4xl font-bold text-[#111827] mb-3">
             Retrouvez une entreprise belge
@@ -158,9 +158,7 @@ const VerifierEntreprise = () => {
               {loading ? "Recherche..." : "Rechercher"}
             </Button>
           </form>
-          <p className="text-sm text-gray-500 mb-4">
-            Le préfixe BE, les espaces et les points sont automatiquement supprimés.
-          </p>
+
 
           {error && (
             <div className="mb-4 p-3 rounded-lg text-sm" style={{ backgroundColor: "#FEE2E2", color: "#B91C1C" }}>
