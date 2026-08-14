@@ -42,6 +42,20 @@ const isValidBelgianNumber = (value: string): { valid: boolean; error?: string }
   return { valid: true };
 };
 
+const getStatusStyle = (status: string) => {
+  const s = status.toLowerCase();
+  if (s.includes("active") && !s.includes("inactive")) {
+    return { bg: "#DCFCE7", text: "#15803D", dot: "#15803D" };
+  }
+  if (["inactive", "radiée", "radiee", "cessée", "cessee", "stopped"].some((term) => s.includes(term))) {
+    return { bg: "#F3F4F6", text: "#4B5563", dot: "#6B7280" };
+  }
+  if (["faillite", "bankrupt", "liquidation"].some((term) => s.includes(term))) {
+    return { bg: "#FEE2E2", text: "#B91C1C", dot: "#B91C1C" };
+  }
+  return { bg: "#F3F4F6", text: "#4B5563", dot: "#6B7280" };
+};
+
 const VerifierEntreprise = () => {
   const [input, setInput] = useState("");
   const [error, setError] = useState<string | null>(null);
