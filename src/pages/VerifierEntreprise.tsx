@@ -130,7 +130,7 @@ const VerifierEntreprise = () => {
             <span className="italic font-normal"> — un outil Guide Immo</span>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold text-[#111827] mb-3">
-            Retrouvez une entreprise belge
+            Passez l'entreprise au crible
           </h1>
           <p className="text-base text-gray-500 max-w-lg mx-auto">
             Un accès rapide aux principales sources d'information sur une entreprise.
