@@ -5,7 +5,6 @@ interface Resource {
   url: string;
   description: string;
   addedAt?: string; // ISO date string for when the resource was added
-  highlight?: boolean;
 }
 
 interface ResourceListProps {
@@ -37,9 +36,7 @@ const ResourceList = ({ id, title, resources }: ResourceListProps) => {
                 href={resource.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`flex items-center justify-between p-4 hover:bg-accent/50 transition-colors group border-l-4 ${
-                  resource.highlight ? "border-l-orange-400" : "border-l-transparent"
-                }`}
+                className="flex items-center justify-between p-4 hover:bg-accent/50 transition-colors group"
               >
                 <div className="min-w-0 flex-1">
                   <div className="font-medium text-black dark:text-white group-hover:text-primary transition-colors flex items-center gap-2">
