@@ -5,6 +5,7 @@ interface Resource {
   url: string;
   description: string;
   addedAt?: string; // ISO date string for when the resource was added
+  badge?: string;
 }
 
 interface ResourceListProps {
@@ -39,8 +40,13 @@ const ResourceList = ({ id, title, resources }: ResourceListProps) => {
                 className="flex items-center justify-between p-4 hover:bg-accent/50 transition-colors group"
               >
                 <div className="min-w-0 flex-1">
-                  <div className="font-medium text-black dark:text-white group-hover:text-primary transition-colors flex items-center gap-2">
+                  <div className="font-medium text-black dark:text-white group-hover:text-primary transition-colors flex flex-wrap items-center gap-2">
                     {resource.description}
+                    {resource.badge && (
+                      <span className="inline-flex items-center rounded-full bg-[#F97316] px-2 py-0.5 text-xs font-bold uppercase text-white">
+                        {resource.badge}
+                      </span>
+                    )}
                     {showNewBadge && (
                       <span className="inline-block w-2 h-2 rounded-full bg-green-500 flex-shrink-0" title="Nouveau" />
                     )}
