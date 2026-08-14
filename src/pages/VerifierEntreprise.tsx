@@ -108,6 +108,16 @@ const VerifierEntreprise = () => {
     }
   };
 
+  const handleNewSearch = () => {
+    setInput("");
+    setResult(null);
+    setError(null);
+    setApiError(null);
+    setCopied(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+
   const formatDisplayNumber = (n: string) => {
     if (n.length === 10) {
       return `${n.slice(0, 4)}.${n.slice(4, 7)}.${n.slice(7)}`;
