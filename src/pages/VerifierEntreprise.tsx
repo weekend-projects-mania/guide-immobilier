@@ -6,6 +6,7 @@ interface CheckResult {
   success: true;
   name: string;
   status: string;
+  legal_situation: string;
   legal_form: string;
   entity_type: string;
   cbe_number_formatted: string;
