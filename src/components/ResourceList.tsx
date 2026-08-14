@@ -5,6 +5,7 @@ interface Resource {
   url: string;
   description: string;
   addedAt?: string; // ISO date string for when the resource was added
+  badge?: string;
 }
 
 interface ResourceListProps {
