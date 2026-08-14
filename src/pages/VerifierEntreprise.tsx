@@ -6,6 +6,7 @@ interface CheckResult {
   success: true;
   name: string;
   status: string;
+  legal_situation: string;
   legal_form: string;
   entity_type: string;
   cbe_number_formatted: string;
@@ -200,6 +201,21 @@ const VerifierEntreprise = () => {
                       );
                     })()}
                   </div>
+
+                  {result.legal_situation && (
+                    <div className="text-sm text-gray-500 mb-4">
+                      Situation juridique :{" "}
+                      {(() => {
+                        const style = getStatusStyle(result.legal_situation);
+                        return (
+                          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-semibold" style={{ backgroundColor: style.bg, color: style.text }}>
+                            <span className="w-2 h-2 rounded-full" style={{ backgroundColor: style.dot }} />
+                            {result.legal_situation}
+                          </span>
+                        );
+                      })()}
+                    </div>
+                  )}
 
                   <div className="text-sm text-gray-500 mb-4">
                     Forme juridique : <span className="font-semibold text-gray-900">{result.legal_form}</span>
