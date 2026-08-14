@@ -174,6 +174,51 @@ const VerifierEntreprise = () => {
             </div>
           )}
 
+          {/* Why verify block */}
+          <div className="mt-8 pt-6 border-t border-gray-100">
+            <h2 className="text-xl font-bold text-gray-900 mb-2">
+              Pourquoi vérifier avant de vous engager
+            </h2>
+            <p className="text-sm text-gray-500 mb-6">
+              Trois moments clés d'un achat immobilier où se renseigner sur une entreprise peut vous éviter une mauvaise surprise.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="bg-gray-50 rounded-xl border border-gray-100 p-5">
+                <div className="text-xs font-semibold uppercase tracking-wide text-[#1d4ed8] mb-2">
+                  Avant un compromis
+                </div>
+                <div className="font-bold text-gray-900 mb-2">
+                  Le vendeur professionnel existe-t-il vraiment ?
+                </div>
+                <p className="text-sm text-gray-500">
+                  Vérifiez que le promoteur ou la société venderesse est bien active et dans une situation juridique normale avant de verser un acompte.
+                </p>
+              </div>
+              <div className="bg-gray-50 rounded-xl border border-gray-100 p-5">
+                <div className="text-xs font-semibold uppercase tracking-wide text-[#1d4ed8] mb-2">
+                  Avant un devis chantier
+                </div>
+                <div className="font-bold text-gray-900 mb-2">
+                  L'entrepreneur est-il en règle ?
+                </div>
+                <p className="text-sm text-gray-500">
+                  Une entreprise criblée de dettes (sociales et/ou fiscales), en faillite ou en liquidation peut encore démarcher. Un contrôle rapide du statut BCE ou de ses cotisations ONSS vous protège.
+                </p>
+              </div>
+              <div className="bg-gray-50 rounded-xl border border-gray-100 p-5">
+                <div className="text-xs font-semibold uppercase tracking-wide text-[#1d4ed8] mb-2">
+                  Avant un mandat de syndic
+                </div>
+                <div className="font-bold text-gray-900 mb-2">
+                  La société de gestion est-elle solide ?
+                </div>
+                <p className="text-sm text-gray-500">
+                  Consultez la forme juridique et les publications au Moniteur belge avant de confier la gestion de votre copropriété.
+                </p>
+              </div>
+            </div>
+          </div>
+
           {/* Result block */}
           {(result || loading) && (
             <div className="mt-8 pt-6 border-t border-gray-100">
