@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import SearchBar from "@/components/SearchBar";
 import ResourceList from "@/components/ResourceList";
 import SiteGrid from "@/components/SiteGrid";
+import LatestEpisodes from "@/components/LatestEpisodes";
 import Footer from "@/components/Footer";
 
 const calculerResources = [
@@ -143,6 +144,7 @@ const Index = () => {
         {/* Médias Section */}
         <div id="medias">
           <SiteGrid id="medias-podcasts" title="Médias - Podcasts" sites={podcastsSites} />
+          <LatestEpisodes limit={4} showViewAllLink />
           <SiteGrid id="medias-communautes" title="Médias - Communautés" sites={communautesSites} />
           <SiteGrid id="medias-creation" title="Médias - Création" sites={creationSites} />
         </div>
