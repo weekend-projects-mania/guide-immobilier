@@ -71,7 +71,7 @@ const VerifierEntreprise = () => {
       );
       const data: EnterpriseResponse = await response.json();
 
-      if (!data.success) {
+      if (data.success === false) {
         setError(data.error || "Aucune entreprise trouvée pour ce numéro.");
         return;
       }
