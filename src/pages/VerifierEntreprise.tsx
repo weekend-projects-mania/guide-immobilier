@@ -177,34 +177,34 @@ const VerifierEntreprise = () => {
           {/* Result block */}
           {(result || loading) && (
             <div className="mt-8 pt-6 border-t border-gray-100">
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <div className="text-sm text-gray-500 mb-1">{loading ? "Numéro d'entreprise" : "Entreprise"}</div>
-                  <div className="text-lg font-bold text-gray-900">{resultTitle}</div>
-                </div>
-                <div className="flex items-center gap-2 px-3 py-1 rounded-full text-sm font-semibold" style={{ backgroundColor: "#DCFCE7", color: "#15803D" }}>
-                  <span className="w-2 h-2 rounded-full" style={{ backgroundColor: "#15803D" }} />
-                  Recherche prête
-                </div>
+              <div className="mb-4">
+                <div className="text-sm text-gray-500 mb-1">{loading ? "Numéro d'entreprise" : "Entreprise"}</div>
+                <div className="text-lg font-bold text-gray-900">{resultTitle}</div>
               </div>
               <div className="text-sm text-gray-500 mb-4">
                 Numéro : <span className="font-semibold text-gray-900">{resultNumber}</span>
               </div>
               {result && (
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center py-2 border-b border-gray-50">
-                    <span className="text-sm text-gray-500">Statut</span>
-                    <span className="font-semibold text-gray-900">{result.status}</span>
+                <>
+                  <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
+                    <span>Statut :</span>
+                    {(() => {
+                      const style = getStatusStyle(result.status);
+                      return (
+                        <span className="flex items-center gap-2 px-3 py-1 rounded-full text-sm font-semibold" style={{ backgroundColor: style.bg, color: style.text }}>
+                          <span className="w-2 h-2 rounded-full" style={{ backgroundColor: style.dot }} />
+                          {result.status}
+                        </span>
+                      );
+                    })()}
                   </div>
-                  <div className="flex justify-between items-center py-2 border-b border-gray-50">
-                    <span className="text-sm text-gray-500">Forme juridique</span>
-                    <span className="font-semibold text-gray-900">{result.legal_form}</span>
+                  <div className="text-sm text-gray-500 mb-4">
+                    Forme juridique : <span className="font-semibold text-gray-900">{result.legal_form}</span>
                   </div>
-                  <div className="flex justify-between items-center py-2">
-                    <span className="text-sm text-gray-500">Type d'entité</span>
-                    <span className="font-semibold text-gray-900">{result.entity_type}</span>
+                  <div className="text-sm text-gray-500 mb-4">
+                    Type d'entité : <span className="font-semibold text-gray-900">{result.entity_type}</span>
                   </div>
-                </div>
+                </>
               )}
               {loading && (
                 <div className="text-sm text-gray-500">Chargement des informations...</div>
