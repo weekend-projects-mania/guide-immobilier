@@ -16,7 +16,7 @@ const calculerResources = [
   { name: "Bruxelles Logement", url: "https://loyers.brussels/#step-1", description: "Calculer le loyer de référence à Bruxelles" },
   { name: "Wallonie Logement", url: "https://loyerswallonie.be/", description: "Grille des loyers en Wallonie" },
   { name: "Immoweb", url: "https://www.immoweb.be/fr/estimation-immobiliere/simulateur-prix/address", description: "Estimer la valeur d'un bien immobilier" },
-  { name: "MyPension", url: "https://www.sfpd.fgov.be/fr/montant-de-la-pension/combien", description: "Calculer le montant de sa pension" },
+  
 ];
 
 const verifierResources = [
