@@ -123,10 +123,11 @@ const VerifierEntreprise = () => {
         {/* Header text */}
         <div className="text-center mb-10">
           <div
-            className="text-xs font-bold uppercase tracking-[0.15em] mb-3"
+            className="text-xs font-bold tracking-[0.15em] mb-3"
             style={{ color: "#1d4ed8" }}
           >
-            Entreprise Check — Un outil Guide Immo
+            <span className="uppercase">Entreprise Check</span>
+            <span className="italic font-normal"> — un outil Guide Immo</span>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold text-[#111827] mb-3">
             Retrouvez une entreprise belge
@@ -175,13 +176,16 @@ const VerifierEntreprise = () => {
           {/* Result block */}
           {(result || loading) && (
             <div className="mt-8 pt-6 border-t border-gray-100">
-              <div className="mb-4">
-                <div className="text-sm text-gray-500 mb-1">{loading ? "Numéro d'entreprise" : "Entreprise"}</div>
-                <div className="text-lg font-bold text-gray-900">{resultTitle}</div>
+              <div className="text-sm text-gray-500 mb-4">
+                Entreprise :{" "}
+                <span className="text-lg font-bold text-gray-900">
+                  {loading ? "Recherche en cours..." : resultTitle}
+                </span>
               </div>
               <div className="text-sm text-gray-500 mb-4">
                 Numéro : <span className="font-semibold text-gray-900">{resultNumber}</span>
               </div>
+
               {result && (
                 <>
                   <div className="text-sm text-gray-500 mb-4">
