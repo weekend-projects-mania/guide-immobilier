@@ -120,7 +120,7 @@ const VerifierEntreprise = () => {
 
   return (
     <div className="min-h-screen py-12 px-4" style={{ backgroundColor: "#F4F6F9", fontFamily: "Inter, sans-serif" }}>
-      <div className="max-w-2xl mx-auto">
+      <div className="max-w-4xl mx-auto">
         {/* Header text */}
         <div className="text-center mb-10">
           <div
@@ -141,7 +141,7 @@ const VerifierEntreprise = () => {
         {/* Main card */}
         <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8">
           <label className="block text-sm font-semibold text-gray-900 mb-2">
-            Numéro d'entreprise ou numéro de TVA
+            Numéro d'entreprise ou de TVA
           </label>
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 mb-3">
             <Input
