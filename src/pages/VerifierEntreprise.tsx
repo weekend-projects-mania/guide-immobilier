@@ -126,7 +126,7 @@ const VerifierEntreprise = () => {
             className="text-xs font-bold uppercase tracking-[0.15em] mb-3"
             style={{ color: "#1d4ed8" }}
           >
-            Entreprise Check
+            Entreprise Check — Un outil Guide Immo
           </div>
           <h1 className="text-3xl md:text-4xl font-bold text-[#111827] mb-3">
             Retrouvez une entreprise belge
@@ -158,9 +158,7 @@ const VerifierEntreprise = () => {
               {loading ? "Recherche..." : "Rechercher"}
             </Button>
           </form>
-          <p className="text-sm text-gray-500 mb-4">
-            Le préfixe BE, les espaces et les points sont automatiquement supprimés.
-          </p>
+
 
           {error && (
             <div className="mb-4 p-3 rounded-lg text-sm" style={{ backgroundColor: "#FEE2E2", color: "#B91C1C" }}>
@@ -186,18 +184,19 @@ const VerifierEntreprise = () => {
               </div>
               {result && (
                 <>
-                  <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
-                    <span>Statut :</span>
+                  <div className="text-sm text-gray-500 mb-4">
+                    Statut :{" "}
                     {(() => {
                       const style = getStatusStyle(result.status);
                       return (
-                        <span className="flex items-center gap-2 px-3 py-1 rounded-full text-sm font-semibold" style={{ backgroundColor: style.bg, color: style.text }}>
+                        <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-semibold" style={{ backgroundColor: style.bg, color: style.text }}>
                           <span className="w-2 h-2 rounded-full" style={{ backgroundColor: style.dot }} />
                           {result.status}
                         </span>
                       );
                     })()}
                   </div>
+
                   <div className="text-sm text-gray-500 mb-4">
                     Forme juridique : <span className="font-semibold text-gray-900">{result.legal_form}</span>
                   </div>
