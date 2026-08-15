@@ -104,7 +104,7 @@ const LatestEpisodes = ({ limit = 10, showViewAllLink = false }: LatestEpisodesP
       <div className="container px-4">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg font-bold uppercase text-black dark:text-white">Derniers épisodes</h2>
-          {(showViewAllLink || linkOnly) && (
+          {showViewAllLink && (
             <Link
               to="/derniers-podcasts"
               className="inline-flex items-center text-xs font-bold uppercase text-white px-3 py-1 rounded-full hover:opacity-90 transition-opacity"
@@ -114,10 +114,6 @@ const LatestEpisodes = ({ limit = 10, showViewAllLink = false }: LatestEpisodesP
             </Link>
           )}
         </div>
-
-        {!linkOnly && (
-          <>
-
 
         {loading && (
           <p className="text-sm text-muted-foreground">Chargement des derniers épisodes...</p>
@@ -175,8 +171,6 @@ const LatestEpisodes = ({ limit = 10, showViewAllLink = false }: LatestEpisodesP
               );
             })}
           </div>
-        )}
-          </>
         )}
       </div>
     </section>
