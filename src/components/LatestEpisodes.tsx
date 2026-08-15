@@ -182,6 +182,8 @@ const LatestEpisodes = ({ limit = 10, showViewAllLink = false, linkOnly = false 
             })}
           </div>
         )}
+          </>
+        )}
       </div>
     </section>
   );
