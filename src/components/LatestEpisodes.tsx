@@ -31,7 +31,9 @@ interface LatestEpisodesResponse {
 interface LatestEpisodesProps {
   limit?: number;
   showViewAllLink?: boolean;
+  linkOnly?: boolean;
 }
+
 
 const logoMap: Record<string, string> = {
   "Le Rdv Des Proprios": LeRdvDesPropriosLogo,
@@ -58,12 +60,18 @@ const formatDate = (dateString: string): string => {
   });
 };
 
-const LatestEpisodes = ({ limit = 10, showViewAllLink = false }: LatestEpisodesProps) => {
+const LatestEpisodes = ({ limit = 10, showViewAllLink = false, linkOnly = false }: LatestEpisodesProps) => {
   const [episodes, setEpisodes] = useState<Episode[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(!linkOnly);
   const [error, setError] = useState(false);
 
+
   useEffect(() => {
+    if (linkOnly) {
+      setLoading(false);
+      return;
+    }
+
     let cancelled = false;
 
     const fetchEpisodes = async () => {
@@ -94,7 +102,8 @@ const LatestEpisodes = ({ limit = 10, showViewAllLink = false }: LatestEpisodesP
     return () => {
       cancelled = true;
     };
-  }, [limit]);
+  }, [limit, linkOnly]);
+
 
   return (
     <section className="py-8">
