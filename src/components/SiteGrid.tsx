@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 interface Site {
   name: string;
   url: string;
@@ -11,6 +13,7 @@ interface SiteGridProps {
   id: string;
   title: string;
   sites: Site[];
+  headerAction?: ReactNode;
 }
 
 const isRecent = (addedAt?: string): boolean => {
