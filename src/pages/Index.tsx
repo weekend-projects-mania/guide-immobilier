@@ -1,9 +1,9 @@
+import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import SearchBar from "@/components/SearchBar";
 import ResourceList from "@/components/ResourceList";
 import SiteGrid from "@/components/SiteGrid";
-import LatestEpisodes from "@/components/LatestEpisodes";
 import Footer from "@/components/Footer";
 
 const calculerResources = [
@@ -143,8 +143,20 @@ const Index = () => {
         
         {/* Médias Section */}
         <div id="medias">
-          <SiteGrid id="medias-podcasts" title="Médias - Podcasts" sites={podcastsSites} />
-          <LatestEpisodes linkOnly />
+          <SiteGrid
+            id="medias-podcasts"
+            title="Médias - Podcasts"
+            sites={podcastsSites}
+            headerAction={
+              <Link
+                to="/derniers-podcasts"
+                className="inline-flex items-center text-xs font-bold uppercase text-white px-3 py-1 rounded-full hover:opacity-90 transition-opacity"
+                style={{ backgroundColor: "#F97316" }}
+              >
+                Voir tous les derniers épisodes →
+              </Link>
+            }
+          />
           <SiteGrid id="medias-communautes" title="Médias - Communautés" sites={communautesSites} />
           <SiteGrid id="medias-creation" title="Médias - Création" sites={creationSites} />
         </div>
