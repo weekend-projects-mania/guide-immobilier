@@ -13,7 +13,7 @@ const DerniersPodcasts = () => {
               Top 10 des dernières sorties des podcasts immobiliers
             </h1>
             <p className="text-muted-foreground mb-8 max-w-2xl">
-              Les podcasts immobiliers belges que nous suivons, mis à jour chaque jour.
+              Toute l'actualité des podcasts immo belges, actualisée quotidiennement.
             </p>
             <LatestEpisodes limit={10} />
           </div>
