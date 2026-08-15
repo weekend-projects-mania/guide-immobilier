@@ -31,7 +31,6 @@ interface LatestEpisodesResponse {
 interface LatestEpisodesProps {
   limit?: number;
   showViewAllLink?: boolean;
-  linkOnly?: boolean;
 }
 
 
