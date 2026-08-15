@@ -113,12 +113,17 @@ const LatestEpisodes = ({ limit = 10, showViewAllLink = false, linkOnly = false 
           {showViewAllLink && (
             <Link
               to="/derniers-podcasts"
-              className="text-sm font-medium text-primary hover:underline"
+              className="inline-flex items-center text-xs font-bold uppercase text-white px-3 py-1 rounded-full hover:opacity-90 transition-opacity"
+              style={{ backgroundColor: "#F97316" }}
             >
               Voir tous les derniers épisodes →
             </Link>
           )}
         </div>
+
+        {!linkOnly && (
+          <>
+
 
         {loading && (
           <p className="text-sm text-muted-foreground">Chargement des derniers épisodes...</p>
