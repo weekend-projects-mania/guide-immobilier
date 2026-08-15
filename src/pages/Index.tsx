@@ -144,7 +144,7 @@ const Index = () => {
         {/* Médias Section */}
         <div id="medias">
           <SiteGrid id="medias-podcasts" title="Médias - Podcasts" sites={podcastsSites} />
-          <LatestEpisodes limit={4} showViewAllLink />
+          <LatestEpisodes linkOnly />
           <SiteGrid id="medias-communautes" title="Médias - Communautés" sites={communautesSites} />
           <SiteGrid id="medias-creation" title="Médias - Création" sites={creationSites} />
         </div>
