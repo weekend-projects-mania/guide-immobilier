@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 interface Site {
   name: string;
   url: string;
@@ -11,6 +13,7 @@ interface SiteGridProps {
   id: string;
   title: string;
   sites: Site[];
+  headerAction?: ReactNode;
 }
 
 const isRecent = (addedAt?: string): boolean => {
@@ -21,7 +24,7 @@ const isRecent = (addedAt?: string): boolean => {
   return diffInDays <= 5;
 };
 
-const SiteGrid = ({ id, title, sites }: SiteGridProps) => {
+const SiteGrid = ({ id, title, sites, headerAction }: SiteGridProps) => {
   const getFaviconUrl = (url: string) => {
     try {
       const domain = new URL(url).hostname;
@@ -41,7 +44,10 @@ const SiteGrid = ({ id, title, sites }: SiteGridProps) => {
   return (
     <section id={id} className="py-8">
       <div className="container px-4">
-        <h2 className="text-lg font-bold uppercase text-black dark:text-white mb-4">{title}</h2>
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-lg font-bold uppercase text-black dark:text-white">{title}</h2>
+          {headerAction && headerAction}
+        </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {sites.map((site) => {
             const showNewBadge = isRecent(site.addedAt);
