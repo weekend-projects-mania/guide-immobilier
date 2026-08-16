@@ -127,16 +127,6 @@ const VerifierEntreprise = () => {
     return n;
   };
 
-  const getFilteredNaceActivities = (
-    activities: CheckResult["nace_activities"]
-  ): CheckResult["nace_activities"] => {
-    if (!activities || activities.length === 0) return [];
-    const nace2025 = activities.filter((a) => a.nace_version === "Nace2025");
-    if (nace2025.length > 0) return nace2025;
-    const nace2008 = activities.filter((a) => a.nace_version === "Nace2008");
-    if (nace2008.length > 0) return nace2008;
-    return activities;
-  };
 
   const resultTitle = result?.name || "Numéro d'entreprise";
   const resultNumber = result?.cbe_number_formatted || formatDisplayNumber(numero);
@@ -303,21 +293,45 @@ const VerifierEntreprise = () => {
                     </div>
                   )}
 
-                  {result.nace_activities && getFilteredNaceActivities(result.nace_activities).length > 0 && (
+                  {result.nace_activities && result.nace_activities.length > 0 && (
                     <div className="mt-6">
                       <h3 className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-3">
                         Activités (NACE)
                       </h3>
-                      <div className="space-y-2">
-                        {getFilteredNaceActivities(result.nace_activities).map((activity, index) => (
-                          <div key={index} className="flex items-start gap-3">
-                            <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono font-medium bg-gray-100 text-gray-700 flex-shrink-0">
-                              {activity.code}
-                            </span>
-                            <span className="text-sm text-gray-900">{activity.description}</span>
+                      {result.nace_activities.filter((a) => a.classification === "main").length > 0 && (
+                        <div className="mb-4">
+                          <h4 className="text-sm font-semibold text-gray-900 mb-2">Activité principale</h4>
+                          <div className="space-y-2">
+                            {result.nace_activities
+                              .filter((a) => a.classification === "main")
+                              .map((activity, index) => (
+                                <div key={index} className="flex items-start gap-3">
+                                  <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono font-medium bg-gray-100 text-gray-700 flex-shrink-0">
+                                    {activity.code}
+                                  </span>
+                                  <span className="text-sm text-gray-900">{activity.description}</span>
+                                </div>
+                              ))}
                           </div>
-                        ))}
-                      </div>
+                        </div>
+                      )}
+                      {result.nace_activities.filter((a) => a.classification === "secondary").length > 0 && (
+                        <div>
+                          <h4 className="text-sm font-semibold text-gray-900 mb-2">Activités secondaires</h4>
+                          <div className="space-y-2">
+                            {result.nace_activities
+                              .filter((a) => a.classification === "secondary")
+                              .map((activity, index) => (
+                                <div key={index} className="flex items-start gap-3">
+                                  <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono font-medium bg-gray-100 text-gray-700 flex-shrink-0">
+                                    {activity.code}
+                                  </span>
+                                  <span className="text-sm text-gray-900">{activity.description}</span>
+                                </div>
+                              ))}
+                          </div>
+                        </div>
+                      )}
                     </div>
                   )}
                 </>
