@@ -127,6 +127,17 @@ const VerifierEntreprise = () => {
     return n;
   };
 
+  const getFilteredNaceActivities = (
+    activities: CheckResult["nace_activities"]
+  ): CheckResult["nace_activities"] => {
+    if (!activities || activities.length === 0) return [];
+    const nace2025 = activities.filter((a) => a.nace_version === "Nace2025");
+    if (nace2025.length > 0) return nace2025;
+    const nace2008 = activities.filter((a) => a.nace_version === "Nace2008");
+    if (nace2008.length > 0) return nace2008;
+    return activities;
+  };
+
   const resultTitle = result?.name || "Numéro d'entreprise";
   const resultNumber = result?.cbe_number_formatted || formatDisplayNumber(numero);
 
