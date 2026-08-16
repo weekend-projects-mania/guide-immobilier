@@ -7,10 +7,11 @@ interface CheckResult {
   name: string;
   status: string;
   legal_situation: string;
-  legal_form: string;
   entity_type: string;
   cbe_number_formatted: string;
+  start_date: string;
 }
+
 
 interface CheckError {
   success: false;
@@ -275,11 +276,21 @@ const VerifierEntreprise = () => {
                   )}
 
                   <div className="text-sm text-gray-500 mb-4">
-                    Forme juridique : <span className="font-semibold text-gray-900">{result.legal_form}</span>
-                  </div>
-                  <div className="text-sm text-gray-500 mb-4">
                     Type d'entité : <span className="font-semibold text-gray-900">{result.entity_type}</span>
                   </div>
+                  {result.start_date && (
+                    <div className="text-sm text-gray-500 mb-4">
+                      Date de création :{" "}
+                      <span className="font-semibold text-gray-900">
+                        {new Date(result.start_date).toLocaleDateString("fr-BE", {
+                          day: "2-digit",
+                          month: "2-digit",
+                          year: "numeric",
+                        })}
+                      </span>
+                    </div>
+                  )}
+
                 </>
               )}
               {loading && (
