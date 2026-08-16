@@ -303,6 +303,23 @@ const VerifierEntreprise = () => {
                     </div>
                   )}
 
+                  {result.nace_activities && getFilteredNaceActivities(result.nace_activities).length > 0 && (
+                    <div className="mt-6">
+                      <h3 className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-3">
+                        Activités (NACE)
+                      </h3>
+                      <div className="space-y-2">
+                        {getFilteredNaceActivities(result.nace_activities).map((activity, index) => (
+                          <div key={index} className="flex items-start gap-3">
+                            <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono font-medium bg-gray-100 text-gray-700 flex-shrink-0">
+                              {activity.code}
+                            </span>
+                            <span className="text-sm text-gray-900">{activity.description}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </>
               )}
               {loading && (
