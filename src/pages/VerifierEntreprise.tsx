@@ -7,10 +7,11 @@ interface CheckResult {
   name: string;
   status: string;
   legal_situation: string;
-  legal_form: string;
   entity_type: string;
   cbe_number_formatted: string;
+  start_date: string;
 }
+
 
 interface CheckError {
   success: false;
