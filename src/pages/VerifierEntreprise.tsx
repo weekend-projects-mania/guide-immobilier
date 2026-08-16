@@ -10,6 +10,7 @@ interface CheckResult {
   entity_type: string;
   cbe_number_formatted: string;
   start_date: string;
+  nace_activities: { code: string; description: string; classification: string; nace_version: string }[];
 }
 
 
