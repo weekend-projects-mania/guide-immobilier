@@ -7,10 +7,8 @@ import SiteGrid from "@/components/SiteGrid";
 import Footer from "@/components/Footer";
 
 const calculerResources = [
-  { name: "Notaire.be", url: "https://www.notaire.be/calculateurs/immobilier/calcul-de-frais-dacte-dachat-dun-bien-immobilier-et/ou-dun-terrain-batir", description: "Estimer les frais de \"notaire\" d'un bien immobilier (Wallonie/Bruxelles/Flandre)" },
+  { name: "Conforme aux outils sur Notaire.be", url: "/calculateur-frais-notaire", description: "Estimer les frais d'acte d'achat et de crédit", badge: "Outil GuideImmo", addedAt: "2026-08-17" },
   { name: "Guide-épargne.be", url: "https://www.guide-epargne.be/epargner/simulation-creditlogement.html#results", description: "Simuler son prêt hypothécaire" },
-  { name: "Notaire.be", url: "https://www.notaire.be/calculateurs/immobilier/calcul-de-frais-dacte-de-credit-hypothecaire", description: "Estimer les frais d'acte de crédit hypothécaire" },
-  { name: "Notaire.be", url: "https://www.notaire.be/calculateurs/immobilier/calcul-de-frais-dacte-dachat-lors-dune-vente-publique-en-ligne-biddit", description: "Estimer les frais d'acte d'achat pour une vente Biddit (enchère)" },
   { name: "Guide-épargne.be", url: "https://www.guide-epargne.be/epargner/comparez/frais-refinancement.html", description: "Estimer les frais de refinancement de votre crédit" },
   { name: "Notaire.be", url: "https://www.notaire.be/calculateurs/immobilier/calcul-de-frais-dacte-de-mainlevee-hypothecaire", description: "Estimer les frais d'acte de mainlevée hypothécaire" },
   { name: "Statbel", url: "https://statbel.fgov.be/fr/themes/prix-la-consommation/calculateur-de-loyer", description: "Calculateur de loyer indexé (tous types de baux)", addedAt: "2026-02-02" },
