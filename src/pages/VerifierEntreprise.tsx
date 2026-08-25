@@ -413,6 +413,105 @@ const VerifierEntreprise = () => {
           )}
         </div>
 
+        {/* Dernières publications au Moniteur belge */}
+        {(result || loading) && (
+          <section className="mb-8">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-4">
+              Dernières publications au Moniteur belge
+            </h2>
+
+            {pubLoading && (
+              <div className="bg-white rounded-xl border border-gray-200 p-5 text-sm text-gray-500">
+                Chargement des publications...
+              </div>
+            )}
+
+            {!pubLoading && pubError && (
+              <div className="bg-white rounded-xl border border-gray-200 p-5 text-sm text-gray-500">
+                Publications au Moniteur belge indisponibles pour le moment.
+              </div>
+            )}
+
+            {!pubLoading && !pubError && publications && publications.length === 0 && (
+              <div className="bg-white rounded-xl border border-gray-200 p-5 text-sm text-gray-500">
+                Aucune publication récente trouvée au Moniteur belge pour cette entreprise.
+              </div>
+            )}
+
+            {!pubLoading && !pubError && publications && publications.length > 0 && (
+              <div className="space-y-4">
+                {publications.map((pub, index) => (
+                  <div key={index} className="bg-white rounded-xl border border-gray-200 p-5">
+                    <div className="flex flex-wrap items-center gap-3 mb-2">
+                      <span className="text-sm font-semibold text-gray-900">
+                        {pub.publication_date
+                          ? new Date(pub.publication_date).toLocaleDateString("fr-BE", {
+                              day: "2-digit",
+                              month: "2-digit",
+                              year: "numeric",
+                            })
+                          : "Date inconnue"}
+                      </span>
+                      {pub.event ? (
+                        <span
+                          className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold"
+                          style={{ backgroundColor: "#E0E7FF", color: "#1d4ed8" }}
+                        >
+                          {EVENT_LABELS[pub.event.event_type] || "Autre publication"}
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-gray-100 text-gray-600">
+                          Analyse en cours
+                        </span>
+                      )}
+                    </div>
+
+                    {pub.publication_type && (
+                      <p className="text-sm italic text-gray-700 mb-3">
+                        « {pub.publication_type} »
+                      </p>
+                    )}
+
+                    {pub.event?.summary && (
+                      <div className="mb-3">
+                        <p className="text-sm text-gray-900">{pub.event.summary}</p>
+                        <p className="text-xs text-gray-400 mt-1">Résumé généré automatiquement</p>
+                      </div>
+                    )}
+
+                    {pub.document_url && (
+                      <a
+                        href={pub.document_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-semibold hover:underline"
+                        style={{ color: "#1d4ed8" }}
+                      >
+                        Voir le document original →
+                      </a>
+                    )}
+                  </div>
+                ))}
+
+                {pubTotalCount > publications.length && (
+                  <div className="text-sm text-gray-500">
+                    {pubTotalCount} publications au total pour cette entreprise.{" "}
+                    <a
+                      href="https://www.ejustice.just.fgov.be/cgi_tsv/rech.pl?language=fr"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-semibold hover:underline"
+                      style={{ color: "#1d4ed8" }}
+                    >
+                      Consulter la recherche officielle du Moniteur belge →
+                    </a>
+                  </div>
+                )}
+              </div>
+            )}
+          </section>
+        )}
+
         {/* Sources officielles */}
         {(result || loading) && (
           <section className="mb-8">
