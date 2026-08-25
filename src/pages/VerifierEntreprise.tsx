@@ -101,8 +101,35 @@ const VerifierEntreprise = () => {
   const [result, setResult] = useState<CheckResult | null>(null);
   const [apiError, setApiError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
+  const [pubLoading, setPubLoading] = useState(false);
+  const [pubError, setPubError] = useState(false);
+  const [publications, setPublications] = useState<Publication[] | null>(null);
+  const [pubTotalCount, setPubTotalCount] = useState(0);
 
   const numero = normalizeNumber(input);
+
+  const fetchPublications = async (num: string) => {
+    setPubLoading(true);
+    setPubError(false);
+    setPublications(null);
+    setPubTotalCount(0);
+    try {
+      const response = await fetch(
+        `https://guideimmo.xc1.app/webhook/moniteur-belge-publications?numero=${encodeURIComponent(num)}&limit=10`
+      );
+      const data: PublicationsResponse = await response.json();
+      if (!data || data.success === false) {
+        setPubError(true);
+      } else {
+        setPublications(data.publications || []);
+        setPubTotalCount(data.total_count ?? data.count ?? (data.publications?.length || 0));
+      }
+    } catch {
+      setPubError(true);
+    } finally {
+      setPubLoading(false);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -110,6 +137,9 @@ const VerifierEntreprise = () => {
     setApiError(null);
     setResult(null);
     setCopied(false);
+    setPublications(null);
+    setPubError(false);
+    setPubLoading(false);
 
     const validation = isValidBelgianNumber(numero);
     if (!validation.valid) {
@@ -127,6 +157,7 @@ const VerifierEntreprise = () => {
         setApiError(data.error || "Une erreur est survenue lors de la vérification.");
       } else {
         setResult(data);
+        void fetchPublications(numero);
       }
     } catch (err) {
       setApiError("Impossible de contacter le service de vérification. Réessayez plus tard.");
