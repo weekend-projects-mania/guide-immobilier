@@ -21,6 +21,41 @@ interface CheckError {
 
 type ApiResponse = CheckResult | CheckError;
 
+interface PublicationEvent {
+  event_type: string;
+  summary?: string | null;
+}
+
+interface Publication {
+  publication_date: string;
+  publication_type: string;
+  document_url: string;
+  event: PublicationEvent | null;
+}
+
+interface PublicationsResponse {
+  success: boolean;
+  count?: number;
+  total_count?: number;
+  publications?: Publication[];
+}
+
+const EVENT_LABELS: Record<string, string> = {
+  CREATION: "Création",
+  NOMINATION: "Nomination",
+  DEMISSION: "Démission",
+  CHANGEMENT_SIEGE: "Changement de siège",
+  MODIFICATION_STATUTS: "Modification des statuts",
+  CAPITAL: "Capital",
+  TRANSFORMATION: "Transformation",
+  FUSION: "Fusion",
+  SCISSION: "Scission",
+  DISSOLUTION: "Dissolution",
+  LIQUIDATION: "Liquidation",
+  CESSATION: "Cessation",
+  AUTRE: "Autre publication",
+};
+
 const normalizeNumber = (raw: string): string => {
   let cleaned = raw.trim().toUpperCase();
   if (cleaned.startsWith("BE")) {
