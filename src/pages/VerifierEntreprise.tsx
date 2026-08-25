@@ -21,6 +21,41 @@ interface CheckError {
 
 type ApiResponse = CheckResult | CheckError;
 
+interface PublicationEvent {
+  event_type: string;
+  summary?: string | null;
+}
+
+interface Publication {
+  publication_date: string;
+  publication_type: string;
+  document_url: string;
+  event: PublicationEvent | null;
+}
+
+interface PublicationsResponse {
+  success: boolean;
+  count?: number;
+  total_count?: number;
+  publications?: Publication[];
+}
+
+const EVENT_LABELS: Record<string, string> = {
+  CREATION: "Création",
+  NOMINATION: "Nomination",
+  DEMISSION: "Démission",
+  CHANGEMENT_SIEGE: "Changement de siège",
+  MODIFICATION_STATUTS: "Modification des statuts",
+  CAPITAL: "Capital",
+  TRANSFORMATION: "Transformation",
+  FUSION: "Fusion",
+  SCISSION: "Scission",
+  DISSOLUTION: "Dissolution",
+  LIQUIDATION: "Liquidation",
+  CESSATION: "Cessation",
+  AUTRE: "Autre publication",
+};
+
 const normalizeNumber = (raw: string): string => {
   let cleaned = raw.trim().toUpperCase();
   if (cleaned.startsWith("BE")) {
@@ -66,8 +101,35 @@ const VerifierEntreprise = () => {
   const [result, setResult] = useState<CheckResult | null>(null);
   const [apiError, setApiError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
+  const [pubLoading, setPubLoading] = useState(false);
+  const [pubError, setPubError] = useState(false);
+  const [publications, setPublications] = useState<Publication[] | null>(null);
+  const [pubTotalCount, setPubTotalCount] = useState(0);
 
   const numero = normalizeNumber(input);
+
+  const fetchPublications = async (num: string) => {
+    setPubLoading(true);
+    setPubError(false);
+    setPublications(null);
+    setPubTotalCount(0);
+    try {
+      const response = await fetch(
+        `https://guideimmo.xc1.app/webhook/moniteur-belge-publications?numero=${encodeURIComponent(num)}&limit=10`
+      );
+      const data: PublicationsResponse = await response.json();
+      if (!data || data.success === false) {
+        setPubError(true);
+      } else {
+        setPublications(data.publications || []);
+        setPubTotalCount(data.total_count ?? data.count ?? (data.publications?.length || 0));
+      }
+    } catch {
+      setPubError(true);
+    } finally {
+      setPubLoading(false);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -75,6 +137,9 @@ const VerifierEntreprise = () => {
     setApiError(null);
     setResult(null);
     setCopied(false);
+    setPublications(null);
+    setPubError(false);
+    setPubLoading(false);
 
     const validation = isValidBelgianNumber(numero);
     if (!validation.valid) {
@@ -92,6 +157,7 @@ const VerifierEntreprise = () => {
         setApiError(data.error || "Une erreur est survenue lors de la vérification.");
       } else {
         setResult(data);
+        void fetchPublications(numero);
       }
     } catch (err) {
       setApiError("Impossible de contacter le service de vérification. Réessayez plus tard.");
@@ -116,6 +182,10 @@ const VerifierEntreprise = () => {
     setError(null);
     setApiError(null);
     setCopied(false);
+    setPublications(null);
+    setPubError(false);
+    setPubLoading(false);
+    setPubTotalCount(0);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -342,6 +412,105 @@ const VerifierEntreprise = () => {
             </div>
           )}
         </div>
+
+        {/* Dernières publications au Moniteur belge */}
+        {(result || loading) && (
+          <section className="mb-8">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-4">
+              Dernières publications au Moniteur belge
+            </h2>
+
+            {pubLoading && (
+              <div className="bg-white rounded-xl border border-gray-200 p-5 text-sm text-gray-500">
+                Chargement des publications...
+              </div>
+            )}
+
+            {!pubLoading && pubError && (
+              <div className="bg-white rounded-xl border border-gray-200 p-5 text-sm text-gray-500">
+                Publications au Moniteur belge indisponibles pour le moment.
+              </div>
+            )}
+
+            {!pubLoading && !pubError && publications && publications.length === 0 && (
+              <div className="bg-white rounded-xl border border-gray-200 p-5 text-sm text-gray-500">
+                Aucune publication récente trouvée au Moniteur belge pour cette entreprise.
+              </div>
+            )}
+
+            {!pubLoading && !pubError && publications && publications.length > 0 && (
+              <div className="space-y-4">
+                {publications.map((pub, index) => (
+                  <div key={index} className="bg-white rounded-xl border border-gray-200 p-5">
+                    <div className="flex flex-wrap items-center gap-3 mb-2">
+                      <span className="text-sm font-semibold text-gray-900">
+                        {pub.publication_date
+                          ? new Date(pub.publication_date).toLocaleDateString("fr-BE", {
+                              day: "2-digit",
+                              month: "2-digit",
+                              year: "numeric",
+                            })
+                          : "Date inconnue"}
+                      </span>
+                      {pub.event ? (
+                        <span
+                          className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold"
+                          style={{ backgroundColor: "#E0E7FF", color: "#1d4ed8" }}
+                        >
+                          {EVENT_LABELS[pub.event.event_type] || "Autre publication"}
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-gray-100 text-gray-600">
+                          Analyse en cours
+                        </span>
+                      )}
+                    </div>
+
+                    {pub.publication_type && (
+                      <p className="text-sm italic text-gray-700 mb-3">
+                        « {pub.publication_type} »
+                      </p>
+                    )}
+
+                    {pub.event?.summary && (
+                      <div className="mb-3">
+                        <p className="text-sm text-gray-900">{pub.event.summary}</p>
+                        <p className="text-xs text-gray-400 mt-1">Résumé généré automatiquement</p>
+                      </div>
+                    )}
+
+                    {pub.document_url && (
+                      <a
+                        href={pub.document_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-semibold hover:underline"
+                        style={{ color: "#1d4ed8" }}
+                      >
+                        Voir le document original →
+                      </a>
+                    )}
+                  </div>
+                ))}
+
+                {pubTotalCount > publications.length && (
+                  <div className="text-sm text-gray-500">
+                    {pubTotalCount} publications au total pour cette entreprise.{" "}
+                    <a
+                      href="https://www.ejustice.just.fgov.be/cgi_tsv/rech.pl?language=fr"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-semibold hover:underline"
+                      style={{ color: "#1d4ed8" }}
+                    >
+                      Consulter la recherche officielle du Moniteur belge →
+                    </a>
+                  </div>
+                )}
+              </div>
+            )}
+          </section>
+        )}
 
         {/* Sources officielles */}
         {(result || loading) && (
