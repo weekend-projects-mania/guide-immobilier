@@ -182,6 +182,10 @@ const VerifierEntreprise = () => {
     setError(null);
     setApiError(null);
     setCopied(false);
+    setPublications(null);
+    setPubError(false);
+    setPubLoading(false);
+    setPubTotalCount(0);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
