@@ -200,6 +200,7 @@ const VerifierEntreprise = () => {
       } else {
         setResult(data);
         void fetchPublications(numero);
+        void fetchBnb(numero);
       }
     } catch (err) {
       setApiError("Impossible de contacter le service de vérification. Réessayez plus tard.");
