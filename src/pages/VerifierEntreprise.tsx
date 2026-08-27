@@ -121,6 +121,9 @@ const VerifierEntreprise = () => {
   const [pubError, setPubError] = useState(false);
   const [publications, setPublications] = useState<Publication[] | null>(null);
   const [pubTotalCount, setPubTotalCount] = useState(0);
+  const [bnbLoading, setBnbLoading] = useState(false);
+  const [bnbError, setBnbError] = useState(false);
+  const [bnbData, setBnbData] = useState<BnbResponse | null>(null);
 
   const numero = normalizeNumber(input);
 
