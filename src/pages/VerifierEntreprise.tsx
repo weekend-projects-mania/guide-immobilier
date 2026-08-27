@@ -40,6 +40,22 @@ interface PublicationsResponse {
   publications?: Publication[];
 }
 
+interface BnbLatestDeposit {
+  referenceNumber: string;
+  depositDate: string;
+  exerciseStart: string | null;
+  exerciseEnd: string | null;
+  language: string;
+  depositType: string;
+  pdfUrl: string;
+}
+
+interface BnbResponse {
+  hasDeposits: boolean;
+  latest: BnbLatestDeposit | null;
+  totalDeposits: number;
+}
+
 const EVENT_LABELS: Record<string, string> = {
   CREATION: "Création",
   NOMINATION: "Nomination",
