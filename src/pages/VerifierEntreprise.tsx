@@ -40,6 +40,22 @@ interface PublicationsResponse {
   publications?: Publication[];
 }
 
+interface BnbLatestDeposit {
+  referenceNumber: string;
+  depositDate: string;
+  exerciseStart: string | null;
+  exerciseEnd: string | null;
+  language: string;
+  depositType: string;
+  pdfUrl: string;
+}
+
+interface BnbResponse {
+  hasDeposits: boolean;
+  latest: BnbLatestDeposit | null;
+  totalDeposits: number;
+}
+
 const EVENT_LABELS: Record<string, string> = {
   CREATION: "Création",
   NOMINATION: "Nomination",
@@ -105,6 +121,9 @@ const VerifierEntreprise = () => {
   const [pubError, setPubError] = useState(false);
   const [publications, setPublications] = useState<Publication[] | null>(null);
   const [pubTotalCount, setPubTotalCount] = useState(0);
+  const [bnbLoading, setBnbLoading] = useState(false);
+  const [bnbError, setBnbError] = useState(false);
+  const [bnbData, setBnbData] = useState<BnbResponse | null>(null);
 
   const numero = normalizeNumber(input);
 
@@ -130,6 +149,29 @@ const VerifierEntreprise = () => {
       setPubLoading(false);
     }
   };
+
+  const fetchBnb = async (num: string) => {
+    setBnbLoading(true);
+    setBnbError(false);
+    setBnbData(null);
+    try {
+      const response = await fetch(
+        `https://guideimmo.xc1.app/webhook/bnb-references?numero=${encodeURIComponent(num)}`
+      );
+      const data: BnbResponse = await response.json();
+      if (!data) {
+        setBnbError(true);
+      } else {
+        setBnbData(data);
+      }
+    } catch {
+      setBnbError(true);
+    } finally {
+      setBnbLoading(false);
+    }
+  };
+
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -158,6 +200,7 @@ const VerifierEntreprise = () => {
       } else {
         setResult(data);
         void fetchPublications(numero);
+        void fetchBnb(numero);
       }
     } catch (err) {
       setApiError("Impossible de contacter le service de vérification. Réessayez plus tard.");
@@ -186,6 +229,9 @@ const VerifierEntreprise = () => {
     setPubError(false);
     setPubLoading(false);
     setPubTotalCount(0);
+    setBnbLoading(false);
+    setBnbError(false);
+    setBnbData(null);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -559,18 +605,53 @@ const VerifierEntreprise = () => {
               <div className="bg-white rounded-xl border border-gray-200 p-5">
                 <div className="flex items-start justify-between gap-3 mb-3">
                   <div className="text-2xl">📊</div>
-                  <a
-                    href={`https://consult.cbso.nbb.be/consult-enterprise/${numero}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center px-3 py-1.5 rounded-md text-sm font-semibold text-white hover:opacity-90 transition-opacity"
-                    style={{ backgroundColor: "#1d4ed8" }}
-                  >
-                    Rechercher →
-                  </a>
+                  {bnbLoading ? (
+                    <button
+                      disabled
+                      className="inline-flex items-center px-3 py-1.5 rounded-md text-sm font-semibold text-white opacity-60 cursor-not-allowed"
+                      style={{ backgroundColor: "#1d4ed8" }}
+                    >
+                      Chargement...
+                    </button>
+                  ) : bnbData?.hasDeposits && bnbData.latest?.pdfUrl ? (
+                    <a
+                      href={bnbData.latest.pdfUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center px-3 py-1.5 rounded-md text-sm font-semibold text-white hover:opacity-90 transition-opacity"
+                      style={{ backgroundColor: "#1d4ed8" }}
+                    >
+                      Voir le PDF →
+                    </a>
+                  ) : (
+                    <a
+                      href={`https://consult.cbso.nbb.be/consult-enterprise/${numero}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center px-3 py-1.5 rounded-md text-sm font-semibold text-white hover:opacity-90 transition-opacity"
+                      style={{ backgroundColor: "#1d4ed8" }}
+                    >
+                      Rechercher →
+                    </a>
+                  )}
                 </div>
                 <div className="font-bold text-gray-900 mb-1">BNB</div>
                 <div className="text-sm text-gray-500">Centrale des bilans</div>
+                {bnbData?.hasDeposits && bnbData.latest && (
+                  <div className="text-xs text-gray-400 mt-1">
+                    Dernier dépôt :{" "}
+                    {new Date(bnbData.latest.depositDate).toLocaleDateString("fr-BE", {
+                      day: "2-digit",
+                      month: "2-digit",
+                      year: "numeric",
+                    })}
+                    {" (exercice "}
+                    {bnbData.latest.exerciseEnd
+                      ? new Date(bnbData.latest.exerciseEnd).getFullYear()
+                      : "non spécifié"}
+                    )
+                  </div>
+                )}
               </div>
 
               {/* Obligation de retenue */}
