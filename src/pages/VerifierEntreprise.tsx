@@ -637,6 +637,11 @@ const VerifierEntreprise = () => {
                 </div>
                 <div className="font-bold text-gray-900 mb-1">BNB</div>
                 <div className="text-sm text-gray-500">Centrale des bilans</div>
+                {bnbLoading && (
+                  <div className="text-xs text-gray-400 mt-1 animate-pulse">
+                    Interrogation de la Centrale des bilans (jusqu'à 20 secondes)...
+                  </div>
+                )}
                 {bnbData?.hasDeposits && bnbData.latest && (
                   <div className="text-xs text-gray-400 mt-1">
                     Dernier dépôt :{" "}
