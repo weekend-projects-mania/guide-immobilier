@@ -229,6 +229,9 @@ const VerifierEntreprise = () => {
     setPubError(false);
     setPubLoading(false);
     setPubTotalCount(0);
+    setBnbLoading(false);
+    setBnbError(false);
+    setBnbData(null);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
