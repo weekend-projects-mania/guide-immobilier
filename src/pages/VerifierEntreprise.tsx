@@ -150,6 +150,29 @@ const VerifierEntreprise = () => {
     }
   };
 
+  const fetchBnb = async (num: string) => {
+    setBnbLoading(true);
+    setBnbError(false);
+    setBnbData(null);
+    try {
+      const response = await fetch(
+        `https://guideimmo.xc1.app/webhook/bnb-references?numero=${encodeURIComponent(num)}`
+      );
+      const data: BnbResponse = await response.json();
+      if (!data) {
+        setBnbError(true);
+      } else {
+        setBnbData(data);
+      }
+    } catch {
+      setBnbError(true);
+    } finally {
+      setBnbLoading(false);
+    }
+  };
+
+
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
