@@ -605,18 +605,53 @@ const VerifierEntreprise = () => {
               <div className="bg-white rounded-xl border border-gray-200 p-5">
                 <div className="flex items-start justify-between gap-3 mb-3">
                   <div className="text-2xl">📊</div>
-                  <a
-                    href={`https://consult.cbso.nbb.be/consult-enterprise/${numero}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center px-3 py-1.5 rounded-md text-sm font-semibold text-white hover:opacity-90 transition-opacity"
-                    style={{ backgroundColor: "#1d4ed8" }}
-                  >
-                    Rechercher →
-                  </a>
+                  {bnbLoading ? (
+                    <button
+                      disabled
+                      className="inline-flex items-center px-3 py-1.5 rounded-md text-sm font-semibold text-white opacity-60 cursor-not-allowed"
+                      style={{ backgroundColor: "#1d4ed8" }}
+                    >
+                      Chargement...
+                    </button>
+                  ) : bnbData?.hasDeposits && bnbData.latest?.pdfUrl ? (
+                    <a
+                      href={bnbData.latest.pdfUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center px-3 py-1.5 rounded-md text-sm font-semibold text-white hover:opacity-90 transition-opacity"
+                      style={{ backgroundColor: "#1d4ed8" }}
+                    >
+                      Voir le PDF →
+                    </a>
+                  ) : (
+                    <a
+                      href={`https://consult.cbso.nbb.be/consult-enterprise/${numero}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center px-3 py-1.5 rounded-md text-sm font-semibold text-white hover:opacity-90 transition-opacity"
+                      style={{ backgroundColor: "#1d4ed8" }}
+                    >
+                      Rechercher →
+                    </a>
+                  )}
                 </div>
                 <div className="font-bold text-gray-900 mb-1">BNB</div>
                 <div className="text-sm text-gray-500">Centrale des bilans</div>
+                {bnbData?.hasDeposits && bnbData.latest && (
+                  <div className="text-xs text-gray-400 mt-1">
+                    Dernier dépôt :{" "}
+                    {new Date(bnbData.latest.depositDate).toLocaleDateString("fr-BE", {
+                      day: "2-digit",
+                      month: "2-digit",
+                      year: "numeric",
+                    })}
+                    {" (exercice "}
+                    {bnbData.latest.exerciseEnd
+                      ? new Date(bnbData.latest.exerciseEnd).getFullYear()
+                      : "non spécifié"}
+                    )
+                  </div>
+                )}
               </div>
 
               {/* Obligation de retenue */}
